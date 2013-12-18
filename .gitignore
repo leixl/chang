@@ -1,6 +1,12 @@
-*.class
-
-# Package Files #
-*.jar
-*.war
-*.ear
+.class
+.classpath
+.project
+target
+bin
+.settings
+.clover
+.svn
+*.db
+/webapp/src/main/webapp/um/old
+sync.xml
+/server-part/logs

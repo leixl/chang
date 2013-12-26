@@ -86,4 +86,40 @@ CREATE TABLE `t_menu` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='菜单表';
 
 
+DROP TABLE IF EXISTS `t_movie`;
+CREATE TABLE `t_movie` (
+  `movie_id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL COMMENT '原名',
+  `simple_name` varchar(32) COMMENT '简体中文名',
+  `alias_name1` varchar(32) COMMENT '别名1',
+  `alias_name2` varchar(32) COMMENT '别名2',
+  `title` varchar(100) NOT NULL COMMENT '标题',
+  `imdb_no` varchar(32) COMMENT 'IMDb编号',
+  `director` varchar(32) COMMENT '导演',
+  `scenarist` varchar(32) COMMENT '编剧',
+  `area` varchar(32) COMMENT '制片国家/地区',
+  `publish_year` varchar(32) COMMENT '年份',
+  `screening_date` DATE COMMENT '上映日期',
+  `leng` int(11) COMMENT '片长',
+  `remark` varchar(32) COMMENT 'IMDb编号',
+  `create_date` date  COMMENT '创建日期',
+  `update_date` date  COMMENT '修改日期',
+  `cover` varchar(32) COMMENT '封面',
+  `is_disabled` tinyint(1) NOT NULL default '0' COMMENT '是否禁用',
+  PRIMARY KEY  (`movie_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电影信息表';
 
+DROP TABLE IF EXISTS `t_movie_tag`;
+CREATE TABLE `t_movie_tag` (
+  `tag_id` int(11) NOT NULL,
+  `tag_name` varchar(32) NOT NULL COMMENT '电影标签名',
+  `ref_counter` int(11) NOT NULL COMMENT '引用次数',
+  PRIMARY KEY  (`tag_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电影标签表';
+
+DROP TABLE IF EXISTS `t_movietag`;
+CREATE TABLE `t_movietag` (
+  `movie_id` int(11) NOT NULL,
+  `tag_id` int(11) NOT NULL ,
+  `priority` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电影标签关联表';

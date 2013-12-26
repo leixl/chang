@@ -373,6 +373,14 @@
 		<artifactId>c3p0</artifactId>
 		<version>0.9.1.2</version>
 	</dependency>
+	
+	<!-- json -->
+	<dependency>
+		<groupId>json</groupId>
+		<artifactId>json</artifactId>
+		<version>1.0</version>
+	</dependency>
+	
   </dependencies>
   </dependencyManagement>
   

@@ -34,4 +34,6 @@ public interface EMovieService {
 	public EMovie getById(Integer id);
 	
 	public EMovie save(EMovie bean);
+	
+	public EMovie update(EMovie bean);
 }

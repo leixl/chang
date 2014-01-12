@@ -103,7 +103,7 @@ public class Constants {
 	/**
 	 * 资源路径
 	 */
-	public static final String RES_PATH = "/r/cms";
+	public static final String RES_PATH = "/res";
 	/**
 	 * 模板路径
 	 */

@@ -64,4 +64,18 @@ public class EMovieAction extends BaseAction{
 		write(response,"success");
 		return null;
 	}
+	
+	@RequestMapping("/doc/movie/v_edit.do")
+	public String edit(Integer id, ModelMap model){
+		model.addAttribute("movie", service.getById(id));
+		return "doc/movie/edit";
+	}
+	
+	@RequestMapping(value = "/doc/movie/o_update.do")
+	public String update(EMovie bean , HttpServletRequest request,
+			HttpServletResponse response, ModelMap model) {
+		service.update(bean);
+		write(response,"success");
+		return null;
+	}
 }

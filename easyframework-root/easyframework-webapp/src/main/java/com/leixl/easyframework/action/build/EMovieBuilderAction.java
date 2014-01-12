@@ -35,10 +35,10 @@ import freemarker.template.TemplateException;
  * @version v1.0
  */
 @Controller
-public class EMoviePageBuilderAction extends BaseAction{
+public class EMovieBuilderAction extends BaseAction{
 	
 	@Autowired
-	private EMoviePageBuilderService service;
+	private EMovieBuilderService service;
 
 	@RequestMapping(value = "/doc/movie/v_index.do")
 	public String indexInput(HttpServletRequest request, ModelMap model) {

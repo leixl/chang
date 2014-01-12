@@ -31,8 +31,8 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 @Service
-public class EMoviePageBuilderServiceImpl implements EMoviePageBuilderService {
-	private Logger log = LoggerFactory.getLogger(EMoviePageBuilderServiceImpl.class);
+public class EMovieBuilderServiceImpl implements EMovieBuilderService {
+	private Logger log = LoggerFactory.getLogger(EMovieBuilderServiceImpl.class);
 
 	/**
 	 * 首页模板名称
@@ -43,7 +43,7 @@ public class EMoviePageBuilderServiceImpl implements EMoviePageBuilderService {
 	public void index() throws IOException, TemplateException {
 		Map<String, Object> data = new HashMap<String, Object>();
 		TplUtils.frontData(data, "movie", null);
-		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + "/www", TPLDIR_INDEX,
+		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + ConstantsOfBuilder.TPL_BASE_DIR, TPLDIR_INDEX,
 				TPL_INDEX);
 		index(tpl, data);
 	}

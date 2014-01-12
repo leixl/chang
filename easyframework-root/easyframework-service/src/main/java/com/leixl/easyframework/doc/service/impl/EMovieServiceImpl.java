@@ -15,7 +15,9 @@ package com.leixl.easyframework.doc.service.impl;
 
 import java.util.List;
 
+import org.easyframework.core.hibernate3.Updater;
 import org.easyframework.core.pager.Pagination;
+import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,9 +57,10 @@ public class EMovieServiceImpl implements EMovieService{
 	    return dao.save(bean);
 	}
 	
-//	public EMovie updateByUpdater(Updater<EMovie> updater){
-//		
-//	}
+	public EMovie update(EMovie bean){
+		Updater<EMovie> updater = new Updater<EMovie>(bean);
+		return dao.updateByUpdater(updater);
+	}
 //
 //	public EMovie deleteById(Integer id){
 //		

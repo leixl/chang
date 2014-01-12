@@ -285,7 +285,7 @@ public class TplUtils {
 		map.put(BASE, ctx);
 		map.put(RES_SYS, ctx + RES_PATH);
 		String res = ctx + RES_PATH + "/" + "www" + "/"
-				+ "base";
+				+ "douban";
 		// res路径需要去除第一个字符'/'
 		map.put(RES_TPL, res.substring(1));
 		map.put(LOCATION, location);

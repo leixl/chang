@@ -5,7 +5,7 @@ import java.util.Map;
 
 import freemarker.template.TemplateException;
 
-public interface EMoviePageBuilderService {
+public interface EMovieBuilderService {
 	
 
 	public void index() throws IOException, TemplateException;

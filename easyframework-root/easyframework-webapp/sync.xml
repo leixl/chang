@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="GB2312"?>
 
 <syncs>
-    <sync configPropPath="" excludes="" target="D:/github/chang/easyframework-root/easyframework-webapp/target/easyframework-webapp" src="src/main/webapp" type="common" includes=""/>
-    <sync configPropPath="" excludes="" target="D:/github/chang/easyframework-root/easyframework-webapp/target/easyframework-webapp/WEB-INF/classes" src="src/main/resources" type="common" includes=""/>
-    <sync configPropPath="" excludes="" target="D:/github/chang/easyframework-root/easyframework-webapp/target/easyframework-webapp/WEB-INF/classes" src="target/classes" type="common" includes=""/>
+    <sync configPropPath="" excludes="" target="D:/LEIXL/github/chang/easyframework-root/easyframework-webapp/target/easyframework-webapp/WEB-INF/classes" src="target/classes" type="common" includes=""/>
+    <sync configPropPath="" excludes="" target="D:/LEIXL/github/chang/easyframework-root/easyframework-webapp/target/easyframework-webapp/WEB-INF/classes" src="src/main/resources" type="common" includes=""/>
+    <sync configPropPath="" excludes="" target="D:/LEIXL/github/chang/easyframework-root/easyframework-webapp/target/easyframework-webapp" src="src/main/webapp" type="common" includes=""/>
 </syncs>

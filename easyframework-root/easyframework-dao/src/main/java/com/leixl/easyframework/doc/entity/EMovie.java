@@ -16,7 +16,7 @@ package com.leixl.easyframework.doc.entity;
 import java.util.Date;
 
 /**
- *  
+ *  电影
  * @author leixl
  * @date   2013-12-20 下午5:28:59
  * @version v1.0

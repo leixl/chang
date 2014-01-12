@@ -1,0 +1,42 @@
+<div id="new-movies" class="">
+						<div class="new-movies-bd">
+							<h2>
+								近期热门 <span> <a
+									onclick="moreurl(this, {from:'mv_new_mr_3'})" href="/chart">
+										更多影视剧» </a>
+								</span>
+							</h2>
+							<div class="s" data-dstat-areaid="73"
+								data-dstat-mode="click,expose">
+								<ul class="movies-list">
+								    <@cms_movie_list >
+                                    <#list tag_list as a>
+									<li class="list-item" data-title="演员就是演员 배우는 배우다"
+										data-release="2013" data-rate="6.1" data-star="30"
+										data-trailer="http://movie.douban.com/subject/10531178/trailer"
+										data-duration="113分钟" data-region="韩国" data-director="申渊植"
+										data-actors="李准 / 徐英姬 / 姜信惠" data-intro="" data-enough="True"
+										data-rater="782">
+										<ul class="">
+											<li class="poster"><a
+												onclick="moreurl(this, {from:'mv_new_ptr_hot_3'})"
+												href="http://movie.douban.com/subject/10531178/?from=hot_movie">
+													<img class="lazy"
+													data-original="${a.cover!}"
+													src="${a.cover!}"
+													alt="${a.name}" rel="nofollow" style="display: inline;">
+											</a></li>
+											<li class="title"><a class=""
+												onclick="moreurl(this, {from:'mv_new_tl_hot_3'})"
+												href="http://movie.douban.com/subject/10531178/?from=hot_movie">
+													${a.name} </a></li>
+										</ul>
+									</li>
+									</#list>
+                                </@cms_movie_list>
+									
+								</ul>
+							</div>
+							
+						</div>
+					</div>

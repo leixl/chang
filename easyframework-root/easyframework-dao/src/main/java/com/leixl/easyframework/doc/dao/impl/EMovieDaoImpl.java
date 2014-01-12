@@ -75,6 +75,7 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 		}
 		return entity;
 	}
+	
 
 	@Override
 	protected Class<EMovie> getEntityClass() {

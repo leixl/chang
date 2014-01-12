@@ -20,9 +20,30 @@ package com.leixl.easyframework.action.build;
  * @version v1.0
  */
 public class ConstantsOfBuilder {
+	
+	
+	
+	/**
+	 * 模板根路径
+	 */
+	public static final String TPL_BASE = "/t/cms";
 
+	/**
+	 * 模板绝对路径
+	 */
+	public static final String TPL_BASE_DIR = "/www/chang/movie";
+	
 	/**
 	 * 首页模板
 	 */
-	public static final String TPL_BASE_DIR = "/www/chang/movie";
+	public static final String TPLDIR_INDEX = "index";
+	
+	
+	
+	/**
+	 * 静态文件根路径
+	 */
+	public static final String BUILD_BASE_PATH = "/u/cms/";
+	
+	
 }

@@ -19,9 +19,9 @@
 							<table width="98%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td align="center">
-									    <input id="createButton" type='button' class="coolbg np" value='电影首页' onclick="createIndex();"/> 
-										<input id="createTag" type='button' class="coolbg np" value='电影标签' onclick="createTag();"/>
-										<input type='button' class="coolbg np" value='栏目管理' /> 
+									    <input id="createButton" type='button' class="coolbg np" value='生成首页' onclick="createIndex();"/> 
+										<input id="createList" type='button' class="coolbg np" value='生成列表页' onclick="createList();"/> 
+										<input id="createTag" type='button' class="coolbg np" value='生成标签页' onclick="createTag();"/>
 										<input type='button' class="coolbg np" name='bb1'value='更新列表' />
 										<input type='button' class="coolbg np" name='bb2'  value='更新文档' />
 										<input type='button' class='coolbg np'
@@ -69,6 +69,25 @@ function createIndex() {
 			}
 	});
 }
+
+//电影列表页
+function createList() {
+	var button = $("#createButton");
+	var value = button.val();
+	button.val("等待中……").attr("disabled","disabled");
+	$.ajax({url:"o_list.do",
+			dataType:'text',
+			success:function(data) {
+				button.val(value).removeAttr("disabled");		
+				if(data == 'success') {
+					alert("成功！");
+				} else {
+					alert("");			
+			    }
+			}
+	});
+}
+
 
 //电影标签
 function createTag() {

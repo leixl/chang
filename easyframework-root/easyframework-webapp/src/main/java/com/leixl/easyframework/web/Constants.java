@@ -14,10 +14,7 @@ public class Constants {
 	 * url中的jsessionid名称
 	 */
 	public static final String JSESSION_URL = "jsessionid";
-	/**
-	 * 首页模板
-	 */
-	public static final String TPLDIR_INDEX = "index";
+	
 	/**
 	 * 栏目页模板
 	 */
@@ -62,10 +59,7 @@ public class Constants {
 	 * 服务器端包含模板
 	 */
 	public static final String TPLDIR_SSI = "ssi";
-	/**
-	 * 标签模板
-	 */
-	public static final String TPLDIR_TAG = "tag";
+	
 	/**
 	 * 评论模板
 	 */
@@ -91,10 +85,7 @@ public class Constants {
 	 * 模板后缀
 	 */
 	public static final String TPL_SUFFIX = ".html";
-	/**
-	 * 上传路径
-	 */
-	public static final String UPLOAD_PATH = "/u/cms/";
+	
 	
 	/**
 	 * 文库路径
@@ -104,10 +95,7 @@ public class Constants {
 	 * 资源路径
 	 */
 	public static final String RES_PATH = "/res";
-	/**
-	 * 模板路径
-	 */
-	public static final String TPL_BASE = "/t/cms";
+	
 	
 	/**
 	 * 全文检索索引路径

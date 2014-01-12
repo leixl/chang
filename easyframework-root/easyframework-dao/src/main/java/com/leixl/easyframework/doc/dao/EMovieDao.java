@@ -13,10 +13,12 @@
  */
 package com.leixl.easyframework.doc.dao;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.easyframework.core.hibernate3.Updater;
 import org.easyframework.core.pager.Pagination;
+import org.hibernate.ScrollableResults;
 
 import com.leixl.easyframework.doc.entity.EMovie;
 

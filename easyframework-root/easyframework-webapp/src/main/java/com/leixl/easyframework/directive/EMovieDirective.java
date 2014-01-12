@@ -73,7 +73,7 @@ public class EMovieDirective extends AbstractEMovieDirective {
 			}
 			TplUtils.includeTpl(TPL_STYLE_LIST, env);
 		} else if (InvokeType.custom == type) {
-			TplUtils.includeTpl(TPL_NAME,params, env);
+//			TplUtils.includeTpl(TPL_NAME,params, env);
 		} else if (InvokeType.body == type) {
 			body.render(env.getOut());
 		} else {

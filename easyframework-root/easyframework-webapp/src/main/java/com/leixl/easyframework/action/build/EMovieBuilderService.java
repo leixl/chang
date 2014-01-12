@@ -9,8 +9,8 @@ public interface EMovieBuilderService {
 	
 
 	public void index() throws IOException, TemplateException;
+	
+	public void list() throws IOException, TemplateException;
 
-	public void index(String tpl, Map<String, Object> data)
-			throws IOException, TemplateException;
-
+	public void tag() throws IOException, TemplateException;
 }

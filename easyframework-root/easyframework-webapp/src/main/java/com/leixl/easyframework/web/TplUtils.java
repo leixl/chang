@@ -16,10 +16,8 @@ import static com.leixl.easyframework.web.filter.ProcessTimeFilter.START_TIME;
 import static com.leixl.easyframework.web.Constants.RES_PATH;
 import static com.leixl.easyframework.common.Constants.UTF8;
 import static com.leixl.easyframework.web.Constants.TPLDIR_STYLE_LIST;
-import static com.leixl.easyframework.web.Constants.TPLDIR_TAG;
 import static com.leixl.easyframework.web.Constants.TPL_STYLE_PAGE_CHANNEL;
 import static com.leixl.easyframework.web.Constants.TPL_SUFFIX;
-import static com.leixl.easyframework.web.freemarker.DirectiveUtils.PARAM_TPL_SUB;
 
 
 import java.io.IOException;
@@ -157,8 +155,14 @@ public class TplUtils {
 		LocaleEditor localeEditor = new LocaleEditor();
 		localeEditor.setAsText(lang);
 		Locale locale = (Locale) localeEditor.getValue();
-		return solution + "/" + dir + "/"
-				+ messageSource.getMessage(name, null, locale) + TPL_SUFFIX;
+		if(StringUtils.isBlank(dir)){
+			return solution + "/"
+					+ messageSource.getMessage(name, null, locale) + TPL_SUFFIX;
+		}else{
+			return solution + "/" + dir + "/"
+					+ messageSource.getMessage(name, null, locale) + TPL_SUFFIX;
+		}
+		
 	}
 	
 	
@@ -223,29 +227,7 @@ public class TplUtils {
 		}
 	}
 
-	/**
-	 * 标签中包含页面
-	 * 
-	 * @param tplName
-	 * @param site
-	 * @param params
-	 * @param env
-	 * @throws IOException
-	 * @throws TemplateException
-	 */
-	public static void includeTpl(String tplName, 
-			Map<String, TemplateModel> params, Environment env)
-			throws IOException, TemplateException {
-		String subTpl = DirectiveUtils.getString(PARAM_TPL_SUB, params);
-		String tpl;
-		if (StringUtils.isBlank(subTpl)) {
-			tpl = getTplPath(TPLDIR_TAG, tplName);
-		} else {
-			tpl = getTplPath(TPLDIR_TAG, tplName + "_"
-					+ subTpl);
-		}
-		env.include(tpl, UTF8, true);
-	}
+	
 
 	/**
 	 * 标签中包含用户预定义列表样式模板

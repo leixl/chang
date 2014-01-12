@@ -11,7 +11,7 @@ public abstract class Constants {
 	/**
 	 * 索引页
 	 */
-	public static final String INDEX = "index";
+	public static final String INDEX = "list";
 	/**
 	 * 默认模板
 	 */

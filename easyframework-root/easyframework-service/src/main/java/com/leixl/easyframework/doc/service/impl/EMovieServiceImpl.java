@@ -44,6 +44,11 @@ public class EMovieServiceImpl implements EMovieService{
 		return page;
 	}
 	
+	public Pagination getPageForTag(int pageNo, int pageSize) {
+		Pagination page = dao.getPageForTag(pageNo, pageSize);
+		return page;
+	}
+	
 	public List<EMovie> getList(){
 		return dao.getList();
 	}

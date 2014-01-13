@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.leixl.easyframework.doc.service.EMovieService;
+import com.leixl.easyframework.web.TplUtils;
 import com.leixl.easyframework.web.freemarker.DirectiveUtils;
 
 import freemarker.core.Environment;
@@ -92,11 +93,19 @@ public abstract class AbstractEMovieDirective implements
 
 	protected Object getData(Map<String, TemplateModel> params, Environment env)
 			throws TemplateException {
-		return service.getList();
+		int pageSize = TplUtils.getCount(params);
+		if(isPage()){
+			int pageNo = TplUtils.getPageNo(env);
+			System.out.println("当前页："+pageNo +"\t 每页显示条数：" + pageSize);
+			return service.getPageForTag(pageNo, pageSize);
+		}else{
+			return service.getList();
+		}
 		
 	}
 
-
+	abstract protected boolean isPage();
+	
 	@Autowired
 	private EMovieService service;
 }

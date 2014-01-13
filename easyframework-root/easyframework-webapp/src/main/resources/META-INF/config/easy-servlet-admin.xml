@@ -70,7 +70,9 @@
 				<!--在FCK编辑器中需要用到appBase，以确定connector路径。-->
 				<entry key="appBase" value="/myadmin"/>
 				<!--后台管理权限控制-->
-				<entry key="cms_movie_list" value-ref="cms_movie_list"/>
+				<entry key="ch_pagination" value-ref="ch_pagination"/>
+				<entry key="ch_movie_list" value-ref="ch_movie_list"/>
+				<entry key="ch_movie_page" value-ref="ch_movie_page"/>
 			</map>
 		</property>
 		<property name="freemarkerSettings">
@@ -88,8 +90,9 @@
 			</props>
 		</property>
 	</bean>
-	
-	<bean id="cms_movie_list" class="com.leixl.easyframework.directive.EMovieDirective"/>
+	<bean id="ch_pagination" class="com.leixl.easyframework.directive.PaginationDirective"/>
+	<bean id="ch_movie_list" class="com.leixl.easyframework.directive.EMovieDirective"/>
+	<bean id="ch_movie_page" class="com.leixl.easyframework.directive.EMoviePageDirective"/>
 	
 	<context:annotation-config/>
 	

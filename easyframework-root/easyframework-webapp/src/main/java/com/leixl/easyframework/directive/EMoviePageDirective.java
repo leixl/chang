@@ -1,7 +1,7 @@
 /**
  * Project: easyframework-webapp
  * 
- * File Created at 2013-12-23
+ * File Created at 2014年1月13日
  * $Id$
  * 
  * Copyright 2013 leixl.com Croporation Limited.
@@ -18,6 +18,7 @@ import static com.leixl.easyframework.web.Constants.TPL_STYLE_LIST;
 import static com.leixl.easyframework.web.Constants.TPL_SUFFIX;
 import static com.leixl.easyframework.web.TplUtils.PARAM_STYLE_LIST;
 import static com.leixl.easyframework.web.freemarker.DirectiveUtils.OUT_LIST;
+import static com.leixl.easyframework.web.freemarker.DirectiveUtils.OUT_PAGINATION;
 import static freemarker.template.ObjectWrapper.DEFAULT_WRAPPER;
 
 import java.io.IOException;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import org.easyframework.core.pager.Pagination;
 
 import com.leixl.easyframework.doc.entity.EMovie;
 import com.leixl.easyframework.web.TplUtils;
@@ -39,25 +41,26 @@ import freemarker.template.TemplateException;
 import freemarker.template.TemplateModel;
 
 /**
- * 
+ *  
  * @author leixl
- * @date 2013-12-23 下午2:41:37
+ * @date   2014年1月13日 下午1:37:28
  * @version v1.0
  */
-public class EMovieDirective extends AbstractEMovieDirective {
-	
+public class EMoviePageDirective extends AbstractEMovieDirective{
+
 	/**
 	 * 模板名称
 	 */
-	public static final String TPL_NAME = "movie_list";
+	public static final String TPL_NAME = "movie_page";
 
-	@Override
+	@SuppressWarnings("unchecked")
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,
 			TemplateDirectiveBody body) throws TemplateException, IOException {
-		List<EMovie> list = (List<EMovie>)super.getData(params, env);
+		Pagination page = (Pagination) super.getData(params, env);
 		Map<String, TemplateModel> paramWrap = new HashMap<String, TemplateModel>(
 				params);
-		paramWrap.put(OUT_LIST, DEFAULT_WRAPPER.wrap(list));
+		paramWrap.put(OUT_PAGINATION, DEFAULT_WRAPPER.wrap(page));
+		paramWrap.put(OUT_LIST, DEFAULT_WRAPPER.wrap(page.getList()));
 		Map<String, TemplateModel> origMap = DirectiveUtils
 				.addParamsToVariable(env, paramWrap);
 		InvokeType type = DirectiveUtils.getInvokeType(params);
@@ -67,11 +70,13 @@ public class EMovieDirective extends AbstractEMovieDirective {
 				throw new ParamsRequiredException(PARAM_STYLE_LIST);
 			}
 			env.include(TPL_STYLE_LIST + listStyle + TPL_SUFFIX, UTF8, true);
+			TplUtils.includePagination(params, env);
 		} else if (InvokeType.userDefined == type) {
 			if (StringUtils.isBlank(listStyle)) {
 				throw new ParamsRequiredException(PARAM_STYLE_LIST);
 			}
 			TplUtils.includeTpl(TPL_STYLE_LIST, env);
+			TplUtils.includePagination(params, env);
 		} else if (InvokeType.custom == type) {
 //			TplUtils.includeTpl(TPL_NAME,params, env);
 		} else if (InvokeType.body == type) {
@@ -82,9 +87,9 @@ public class EMovieDirective extends AbstractEMovieDirective {
 		DirectiveUtils.removeParamsFromVariable(env, paramWrap, origMap);
 	}
 
-
+	
 	@Override
 	protected boolean isPage() {
-		return false;
+		return true;
 	}
 }

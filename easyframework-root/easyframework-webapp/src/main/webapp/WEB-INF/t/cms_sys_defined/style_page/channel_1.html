@@ -1,21 +1,48 @@
-[#--
-栏目翻页样式
-
-pageClass: 翻页DIV class
-pageStyle: 翻页DIV style
---]
-[#assign p=tag_pagination/]
-<div[#if pageClass??] class="${pageClass}"[/#if][#if pageStyle??] style="${pageStyle}"[/#if]>
-共${p.totalCount}条记录 ${p.pageNo}/${p.totalPage}页
-[#if p.firstPage]&nbsp;<a disabled="disabled">首页</a> <a disabled="disabled">上一页</a>[#t/]
-[#else]&nbsp;<a href="${hrefFormer}${hrefLatter}">首页</a> <a href="${hrefFormer}[#if p.prePage gt 1]_${p.prePage}[/#if]${hrefLatter}">上一页</a>[#t/]
-[/#if]
-[#if p.lastPage]&nbsp;<a disabled="disabled">下一页</a> <a disabled="disabled">尾页</a>
-[#else]&nbsp;<a href="${hrefFormer}_${p.nextPage}${hrefLatter}">下一页</a> <a href="${hrefFormer}_${p.totalPage}${hrefLatter}">尾页</a>
-[/#if]
-&nbsp;第<select onChange="if(this.value==1){location='${hrefFormer}${hrefLatter}'}else{location='${hrefFormer}_'+this.value+'${hrefLatter}'}this.disabled='disabled'">
-[#list 1..p.totalPage as i]
-  <option value="${i}" [#if p.pageNo==i]selected="selected"[/#if]>${i}</option>
-[/#list]
-</select>页
-</div>
+<div id="paginator">
+            
+                
+	                    <span class="prev">&lt;前页</span>
+	                
+	
+	                
+	                    
+	                        <span class="thispage">1</span>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="2">2</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="3">3</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="4">4</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="5">5</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="6">6</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="7">7</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="8">8</a>
+	                    
+	                
+	                    
+	                        <a href="#" data-page="9">9</a>
+	                    
+	                
+	
+	                <span class="break">...</span>
+	                <span class="next"><a href="#" data-page="2">后页&gt;</a></span>
+            
+                 </div>

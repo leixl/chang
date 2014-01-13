@@ -50,6 +50,12 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 		f.append(" order by bean.id desc");
 		return find(f, pageNo, pageSize);
 	}
+	
+	public Pagination getPageForTag(int pageNo, int pageSize){
+		Finder f = Finder.create("select bean from EMovie bean");
+		f.append(" order by bean.id desc");
+		return find(f, pageNo, pageSize);
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<EMovie> getList() {

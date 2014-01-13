@@ -25,6 +25,8 @@ import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import com.leixl.easyframework.doc.dao.EMovieDao;
 import com.leixl.easyframework.doc.entity.EMovie;
 import com.leixl.easyframework.web.TplUtils;
+import com.leixl.easyframework.web.URLHelper;
+import com.leixl.easyframework.web.URLHelper.PageInfo;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
@@ -54,9 +56,13 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 				TPL_MOVIE_LIST);
 		
 		List<EMovie> movies = dao.getList();
+		PageInfo info;
 		int pageSize = 4;
 		int totalPage = movies.size() / pageSize + 1;
-		for(int i = 0 ; i < totalPage ; i ++){
+		for(int i = 1 ; i <= totalPage ; i ++){
+//			info = URLHelper.getPageInfo(getListPath(i).substring(getListPath(i)
+//					.lastIndexOf("/")), null);
+			TplUtils.frontPageData(i,  data);//将pageNo放入环境标量中。
 			build(tpl, getListPath(i),data);
 		}
 	}

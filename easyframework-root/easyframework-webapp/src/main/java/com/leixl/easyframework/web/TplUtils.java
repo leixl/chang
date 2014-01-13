@@ -12,13 +12,12 @@
  * accordance with the terms of the license agreement you entered into
  */
 package com.leixl.easyframework.web;
-import static com.leixl.easyframework.web.filter.ProcessTimeFilter.START_TIME;
-import static com.leixl.easyframework.web.Constants.RES_PATH;
 import static com.leixl.easyframework.common.Constants.UTF8;
+import static com.leixl.easyframework.web.Constants.RES_PATH;
 import static com.leixl.easyframework.web.Constants.TPLDIR_STYLE_LIST;
 import static com.leixl.easyframework.web.Constants.TPL_STYLE_PAGE_CHANNEL;
 import static com.leixl.easyframework.web.Constants.TPL_SUFFIX;
-
+import static com.leixl.easyframework.web.filter.ProcessTimeFilter.START_TIME;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -30,7 +29,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.propertyeditors.LocaleEditor;
 import org.springframework.context.MessageSource;
 
-
+import com.leixl.easyframework.web.URLHelper.PageInfo;
 import com.leixl.easyframework.web.freemarker.DirectiveUtils;
 import com.leixl.easyframework.web.springmvc.MessageResolver;
 
@@ -210,8 +209,7 @@ public class TplUtils {
 		}
 	}
 
-	public static void includePagination(String soltionPath,
-			Map<String, TemplateModel> params, Environment env)
+	public static void includePagination(Map<String, TemplateModel> params, Environment env)
 			throws TemplateException, IOException {
 		String sysPage = DirectiveUtils.getString(PARAM_SYS_PAGE, params);
 		String userPage = DirectiveUtils.getString(PARAM_USER_PAGE, params);
@@ -272,4 +270,34 @@ public class TplUtils {
 		map.put(RES_TPL, res.substring(1));
 		map.put(LOCATION, location);
 	}
+	
+	/**
+	 * 为前台模板设置分页相关数据
+	 * 
+	 * @param request
+	 * @param map
+	 */
+	public static void frontPageData(HttpServletRequest request,
+			Map<String, Object> map) {
+		int pageNo = URLHelper.getPageNo(request);
+		PageInfo info = URLHelper.getPageInfo(request);
+		String href = info.getHref();
+		String hrefFormer = info.getHrefFormer();
+		String hrefLatter = info.getHrefLatter();
+		frontPageData(pageNo, map);
+	}
+
+	/**
+	 * 为前台模板设置分页相关数据
+	 * 
+	 * @param pageNo
+	 * @param href
+	 * @param urlFormer
+	 * @param urlLatter
+	 * @param map
+	 */
+	public static void frontPageData(int pageNo,Map<String, Object> map) {
+		map.put(PAGE_NO, pageNo);
+	}
+
 }

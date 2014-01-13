@@ -60,7 +60,7 @@ public abstract class AbstractEMovieBuilder {
 	public String getListPath(int pageNo){
 		StringBuilder pathBuff = new StringBuilder();
 		pathBuff.append(LOCATION);
-		if(pageNo > 0){
+		if(pageNo > 1){
 			pathBuff.append("/").append(Constants.INDEX).append("_"+pageNo).append(
 					".html");
 		}else{

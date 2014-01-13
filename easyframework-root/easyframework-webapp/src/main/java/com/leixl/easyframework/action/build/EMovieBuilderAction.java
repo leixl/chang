@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.leixl.easyframework.web.BaseAction;
 import com.leixl.easyframework.web.ResponseUtils;
+import com.leixl.easyframework.web.TplUtils;
 
 import freemarker.template.TemplateException;
 

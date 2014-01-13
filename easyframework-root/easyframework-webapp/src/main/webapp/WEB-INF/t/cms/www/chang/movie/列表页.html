@@ -7,6 +7,7 @@
 <link href="/${res}/css/chang.css" rel="stylesheet" type="text/css">
 <link href="/${res}/css/_all.css" rel="stylesheet" type="text/css">
 <link href="/${res}/css/65.css" rel="stylesheet">
+<link href="/${res}/css/page.css" rel="stylesheet">
 
 <script type="text/javascript" src="/${res}/js/jquery.js"></script>
 <script type="text/javascript" src="/${res}/js/slide.js"></script>
@@ -32,37 +33,31 @@
 			<div class="grid-16-8 clearfix">
 
 			<div class="article">
+			<@ch_movie_page count='4'>
 	             <div class="">
 				    
-				    <@cms_movie_list >
-                    <#list tag_list as a>
+                    <#list tag_pagination.list as a>
 				    <p class="ul first"></p>
 				    <table width="100%" class="">
 				        <tbody><tr class="item">
 				            <td width="100" valign="top">
-				                    <a class="nbg" href="" title="乌云背后的幸福线">
-				                        <img src="${a.cover!}" alt="乌云背后的幸福线" class="">
+				                    <a class="nbg" href="" title="${a.name}">
+				                        <img src="${a.cover!}" alt="${a.name}" class="">
 				                    </a>
 				            </td>
-				
 				            <td valign="top">
-				                
-				
 				                <div class="pl2">
-				
 				                    <a href="" class="">
 				                        ${a.name}
 				                    </a>
-				
+				                         
 				                        <div class="star clearfix">
 				                                    <span class="allstar 40"></span>
 				                                    <span class="rating_nums">7.7</span>
 				                            <span class="pl">(83325人评价)</span>
 				                        </div>
-				
-				
+				                         
 				                </div>
-				
 				            </td>
 				        </tr>
 				    </tbody></table>
@@ -70,12 +65,11 @@
 				    <div id="collect_form_3094909"></div>
 				    <p class="ul"></p>
 	                </#list>
-                    </@cms_movie_list>
-	    
-	    
+                    
+	                <@ch_pagination sysPage='1'></@ch_pagination>
 	               </div>
-	            
-	            
+                   </@ch_movie_page>
+        
 	            </div>
 
 

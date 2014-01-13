@@ -100,19 +100,19 @@ public class Constants {
 	/**
 	 * 全文检索索引路径
 	 */
-	public static final String LUCENE_PATH = "/WEB-INF/lucene";
+	public static final String LUCENE_PATH = "/lucene";
 	/**
 	 * 列表样式模板路径
 	 */
-	public static final String TPL_STYLE_LIST = "/WEB-INF/t/cms_sys_defined/style_list/style_";
+	public static final String TPL_STYLE_LIST = "/t/cms_sys_defined/style_list/style_";
 	/**
 	 * 内容分页模板路径
 	 */
-	public static final String TPL_STYLE_PAGE_CONTENT = "/WEB-INF/t/cms_sys_defined/style_page/content_";
+	public static final String TPL_STYLE_PAGE_CONTENT = "/t/cms_sys_defined/style_page/content_";
 	/**
 	 * 列表分页模板路径
 	 */
-	public static final String TPL_STYLE_PAGE_CHANNEL = "/WEB-INF/t/cms_sys_defined/style_page/channel_";
+	public static final String TPL_STYLE_PAGE_CHANNEL = "/t/cms_sys_defined/style_page/channel_";
 	/**
 	 * 页面禁止访问
 	 */
@@ -120,7 +120,7 @@ public class Constants {
 	/**
 	 * 数据库备份路径
 	 */
-	public static final String BACKUP_PATH = "/WEB-INF/buckup";
+	public static final String BACKUP_PATH = "/buckup";
 	/**
 	 * 数据库备份文本前缀
 	 */

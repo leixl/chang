@@ -29,6 +29,14 @@ public interface EMovieService {
 
 	public Pagination getPage(String name,Boolean disabled,int pageNo, int pageSize);
 	
+	/**
+	 * 
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Pagination getPageForTag(int pageNo, int pageSize) ;
+	
 	public List<EMovie> getList();
 	
 	public EMovie getById(Integer id);

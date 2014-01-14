@@ -31,7 +31,9 @@ public interface EMovieTagDao {
 	public Pagination getPage(int pageNo,
 			int pageSize);
 	
-	public List<EMovieTag> getList() ;
+	public List<EMovieTag> getList(Integer typeId) ;
+	
+	public EMovieTag getByName(String name, boolean cacheable) ;
 	
 	public EMovieTag getById(Integer id);
 	
@@ -40,6 +42,10 @@ public interface EMovieTagDao {
 	public EMovieTag updateByUpdater(Updater<EMovieTag> updater);
 	
 	public EMovieTag deleteById(Integer id);
+	
+	public int deleteRef(Integer id);
+	
+	public int countRef(Integer id);
 	
 	
 }

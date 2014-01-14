@@ -66,6 +66,20 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
 	     </td>
     </tr>
     
+     <tr>
+	  <td height="24" colspan="4" class="bline">
+	      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="90" height="22">&nbsp;<span class="pn-required">*</span>标签：</td>
+	            <td width="340" colspan="3"> 
+	            <input name="tagStr" type="text" id="tagStr" style="width:360px" value="${movie.tagStr!}" />&nbsp;（多个标签请用","隔开）
+	            </td>
+	          </tr>
+	          
+	        </table>
+	     </td>
+    </tr>
+    
     <tr>
       <td height="24" colspan="4" class="bline"> 
         <table width="800" border="0" cellspacing="0" cellpadding="0">
@@ -107,6 +121,20 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
+            <td width="90">&nbsp;<span class="pn-required">*</span>热门：</td>
+            <td width="240" colspan="3"> 
+            <#if movie.recommend><input name="recommend" type="radio" class="np" value="1" checked /><#else><input name="recommend" type="radio" class="np" value="1" /></#if>
+              是
+            <#if !movie.recommend><input name="recommend" type="radio" class="np" value="0" checked /><#else><input name="recommend" type="radio" class="np" value="0" /></#if>
+              否             <span class="pn-help">（勾选为热门推荐）</span>
+         </td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td height="24" colspan="4" class="bline">
+      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+          <tr>
             <td width="90">&nbsp;标题图：</td>
             <td colspan="1" width="50%">
             <input type="text" id="uploadImgPath1" name="cover" style="width:220px" value="${movie.cover!}"/>
@@ -129,7 +157,7 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
           <tr>
             <td width="90">&nbsp;<span class="pn-required">*</span>描述：</td>
             <td colspan="3">
-              <textarea id="remark" name="remark" style="width:360px">${movie.remark!}</textarea> 
+              <textarea id="remark" name="remark" style="width:360px">${movie.remark}</textarea> 
             </td>
           </tr>
         </table></td>
@@ -177,6 +205,7 @@ $(function() {
         	showAlert($("#name"),$("#nameTip"),"请输入片名!",null,"right");
 			return false;
 		}
+       
         $(this).ajaxSubmit(options); 
         return false; 
     }); 

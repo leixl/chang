@@ -13,6 +13,7 @@
  */
 package com.leixl.easyframework.doc.service;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.easyframework.core.pager.Pagination;
@@ -29,6 +30,8 @@ public interface EMovieTagService {
 
 	public Pagination getPage(int pageNo, int pageSize);
 	
+	public List<EMovieTag> getListForTag(Integer typeId);
+	
 	public List<EMovieTag> getList();
 	
 	public EMovieTag getById(Integer id);
@@ -36,4 +39,12 @@ public interface EMovieTagService {
 	public EMovieTag save(EMovieTag bean);
 	
 	public EMovieTag update(EMovieTag bean);
+	
+	public List<EMovieTag> saveTags(String[] tagArr);
+	
+	public List<EMovieTag> updateTags(List<EMovieTag> tags, String[] tagArr);
+	
+	public EMovieTag saveTag(String name);
+	
+	public void removeTags(Collection<EMovieTag> tags);
 }

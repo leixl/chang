@@ -18,6 +18,7 @@ import java.util.List;
 import org.easyframework.core.hibernate3.Finder;
 import org.easyframework.core.hibernate3.HibernateBaseDao;
 import org.easyframework.core.pager.Pagination;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.leixl.easyframework.doc.dao.EMovieTagDao;
@@ -41,16 +42,29 @@ public class EMovieTagDaoImpl extends HibernateBaseDao<EMovieTag, Integer> imple
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<EMovieTag> getList() {
+	public List<EMovieTag> getList(Integer typeId) {
 		Finder f = Finder.create("select bean from EMovieTag bean");
+		f.append(" where 1=1");
+		if(typeId != null){
+			f.append(" and bean.typeId =:typeId ");
+			f.setParam("typeId", typeId);
+		}
 		f.append(" order by bean.id desc");
 		return find(f);
+	}
+	
+	public EMovieTag getByName(String name, boolean cacheable) {
+		String hql = "from EMovieTag bean where bean.name=:name";
+		return (EMovieTag) getSession().createQuery(hql).setParameter("name",
+				name).setCacheable(cacheable).uniqueResult();
 	}
 
 	public EMovieTag getById(Integer id) {
 		EMovieTag entity = get(id);
 		return entity;
 	}
+	
+	
 
 	public EMovieTag save(EMovieTag bean) {
 		getSession().save(bean);
@@ -63,6 +77,17 @@ public class EMovieTagDaoImpl extends HibernateBaseDao<EMovieTag, Integer> imple
 			getSession().delete(entity);
 		}
 		return entity;
+	}
+	
+	public int deleteRef(Integer id) {
+		Query query = getSession().getNamedQuery("EMovieTag.deleteContentRef");
+		return query.setParameter(0, id).executeUpdate();
+	}
+
+	public int countRef(Integer id) {
+		Query query = getSession().getNamedQuery("EMovieTag.countContentRef");
+		return ((Number) (query.setParameter(0, id).list().iterator().next()))
+				.intValue();
 	}
 
 	@Override

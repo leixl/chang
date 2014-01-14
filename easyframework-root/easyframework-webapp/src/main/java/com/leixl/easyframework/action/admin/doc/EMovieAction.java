@@ -24,10 +24,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.leixl.easyframework.common.StrUtils;
 import com.leixl.easyframework.doc.entity.EMovie;
 import com.leixl.easyframework.doc.service.EMovieService;
 import com.leixl.easyframework.web.BaseAction;
 import com.leixl.easyframework.web.CookieUtils;
+import com.leixl.easyframework.web.springmvc.MessageResolver;
 
 /**
  *  
@@ -58,9 +60,11 @@ public class EMovieAction extends BaseAction{
 	}
 	
 	@RequestMapping(value = "/doc/movie/o_save.do")
-	public String save(EMovie bean , HttpServletRequest request,
+	public String save(EMovie bean ,String tagStr, HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
-		service.save(bean);
+		String[] tagArr = StrUtils.splitAndTrim(tagStr, ",", MessageResolver
+				.getMessage(request, "tagStr.split"));
+		service.save(bean,tagArr);
 		write(response,"success");
 		return null;
 	}
@@ -72,9 +76,11 @@ public class EMovieAction extends BaseAction{
 	}
 	
 	@RequestMapping(value = "/doc/movie/o_update.do")
-	public String update(EMovie bean , HttpServletRequest request,
+	public String update(EMovie bean ,String tagStr, HttpServletRequest request,
 			HttpServletResponse response, ModelMap model) {
-		service.update(bean);
+		String[] tagArr = StrUtils.splitAndTrim(tagStr, ",", MessageResolver
+				.getMessage(request, "tagStr.split"));
+		service.update(bean,tagArr);
 		write(response,"success");
 		return null;
 	}

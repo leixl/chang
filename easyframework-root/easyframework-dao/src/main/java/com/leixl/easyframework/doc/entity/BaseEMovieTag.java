@@ -49,6 +49,7 @@ public class BaseEMovieTag implements Serializable {
 	private Integer id;
 	private String name;
 	private Integer typeId;
+	private Integer count;
 
 	/**
 	 * @return the id
@@ -93,6 +94,22 @@ public class BaseEMovieTag implements Serializable {
 		this.typeId = typeId;
 	}
 
+	/**
+	 * @return the count
+	 */
+	public Integer getCount() {
+		return count;
+	}
+
+	/**
+	 * @param count the count to set
+	 */
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	
+    
 	
 	
 }

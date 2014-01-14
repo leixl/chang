@@ -15,6 +15,7 @@ package com.leixl.easyframework.doc.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 
@@ -64,8 +65,11 @@ public class BaseEMovie implements Serializable {
 	private String remark;
 	private Date createDate;
 	private Date updateDate;
+	private Boolean recommend;
 	private String cover;
 	private Boolean disabled;
+	
+	private List<EMovieTag> tags;
 
 	public Integer getId() {
 		return id;
@@ -194,6 +198,21 @@ public class BaseEMovie implements Serializable {
 	public void setUpdateDate(Date updateDate) {
 		this.updateDate = updateDate;
 	}
+	
+
+	/**
+	 * @return the recommend
+	 */
+	public Boolean getRecommend() {
+		return recommend;
+	}
+
+	/**
+	 * @param recommend the recommend to set
+	 */
+	public void setRecommend(Boolean recommend) {
+		this.recommend = recommend;
+	}
 
 	public String getCover() {
 		return cover;
@@ -209,6 +228,20 @@ public class BaseEMovie implements Serializable {
 
 	public void setDisabled(Boolean disabled) {
 		this.disabled = disabled;
+	}
+
+	/**
+	 * @return the tags
+	 */
+	public List<EMovieTag> getTags() {
+		return tags;
+	}
+
+	/**
+	 * @param tags the tags to set
+	 */
+	public void setTags(List<EMovieTag> tags) {
+		this.tags = tags;
 	}
 
 	

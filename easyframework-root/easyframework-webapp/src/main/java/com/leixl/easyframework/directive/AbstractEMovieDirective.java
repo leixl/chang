@@ -23,10 +23,6 @@ public abstract class AbstractEMovieDirective implements
 	 */
 	public static final String PARAM_TAG_ID = "tagId";
 	/**
-	 * 输入参数，TAG NAME。允许多个TAG NAME，用","分开。
-	 */
-	public static final String PARAM_TAG_NAME = "tagName";
-	/**
 	 * 输入参数，类型ID。可选。允许多个类型ID,用","分开。
 	 */
 	public static final String PARAM_TYPE_ID = "typeId";
@@ -39,30 +35,12 @@ public abstract class AbstractEMovieDirective implements
 	 */
 	public static final String PARAM_TITLE = "title";
 	/**
-	 * 输入参数，标题图片。0：所有；1：有；2：没有。默认所有。
-	 */
-	public static final String PARAM_IMAGE = "image";
-	/**
 	 * 输入参数，排序方式。
 	 */
 	public static final String PARAM_ORDER_BY = "orderBy";
-	/**
-	 * 输入参数，不包含的文章ID。用于按tag查询相关文章。
-	 */
-	public static final String PARAM_EXCLUDE_ID = "excludeId";
 
 	
-	protected Boolean getHasTitleImg(Map<String, TemplateModel> params)
-			throws TemplateException {
-		String titleImg = DirectiveUtils.getString(PARAM_IMAGE, params);
-		if ("1".equals(titleImg)) {
-			return true;
-		} else if ("2".equals(titleImg)) {
-			return false;
-		} else {
-			return null;
-		}
-	}
+
 
 	protected Boolean getRecommend(Map<String, TemplateModel> params)
 			throws TemplateException {
@@ -93,13 +71,16 @@ public abstract class AbstractEMovieDirective implements
 
 	protected Object getData(Map<String, TemplateModel> params, Environment env)
 			throws TemplateException {
-		int pageSize = TplUtils.getCount(params);
+		int orderBy = getOrderBy(params);
+		Boolean recommend = getRecommend(params);
+		int count = TplUtils.getCount(params);
 		if(isPage()){
 			int pageNo = TplUtils.getPageNo(env);
-			System.out.println("当前页："+pageNo +"\t 每页显示条数：" + pageSize);
-			return service.getPageForTag(pageNo, pageSize);
+			System.out.println("当前页："+pageNo +"\t 每页显示条数：" + count);
+			return service.getPageForTag(pageNo, count);
 		}else{
-			return service.getList();
+			int first = TplUtils.getFirst(params);
+			return service.getListForTag(recommend, orderBy, first, count);
 		}
 		
 	}

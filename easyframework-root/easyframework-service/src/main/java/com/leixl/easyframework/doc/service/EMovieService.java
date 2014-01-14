@@ -29,6 +29,8 @@ public interface EMovieService {
 
 	public Pagination getPage(String name,Boolean disabled,int pageNo, int pageSize);
 	
+	
+	public List<EMovie> getList();
 	/**
 	 * 
 	 * @param pageNo
@@ -37,11 +39,19 @@ public interface EMovieService {
 	 */
 	public Pagination getPageForTag(int pageNo, int pageSize) ;
 	
-	public List<EMovie> getList();
+	/**
+	 * 
+	 * @param recommend
+	 * @param orderBy
+	 * @param first
+	 * @param count
+	 * @return
+	 */
+	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count);
 	
 	public EMovie getById(Integer id);
 	
-	public EMovie save(EMovie bean);
+	public EMovie save(EMovie bean,String[] tagArr);
 	
-	public EMovie update(EMovie bean);
+	public EMovie update(EMovie bean,String[] tagArr);
 }

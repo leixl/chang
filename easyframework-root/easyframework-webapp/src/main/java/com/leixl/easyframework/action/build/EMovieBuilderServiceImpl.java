@@ -49,7 +49,7 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 	}
 	
 	@Transactional(readOnly = true)
-	public void list() throws IOException, TemplateException {
+	public void pager() throws IOException, TemplateException {
 		Map<String, Object> data = new HashMap<String, Object>();
 		TplUtils.frontData(data, LOCATION, null);
 		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR, null,
@@ -63,7 +63,7 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 //			info = URLHelper.getPageInfo(getListPath(i).substring(getListPath(i)
 //					.lastIndexOf("/")), null);
 			TplUtils.frontPageData(i,  data);//将pageNo放入环境标量中。
-			build(tpl, getListPath(i),data);
+			build(tpl, getPagerPath(i),data);
 		}
 	}
 	

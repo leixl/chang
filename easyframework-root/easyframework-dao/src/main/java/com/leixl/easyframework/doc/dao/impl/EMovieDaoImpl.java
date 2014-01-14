@@ -51,6 +51,13 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 		return find(f, pageNo, pageSize);
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<EMovie> getList() {
+		Finder f = Finder.create("select bean from EMovie bean");
+		f.append(" order by bean.id desc");
+		return find(f);
+	}
+	
 	public Pagination getPageForTag(int pageNo, int pageSize){
 		Finder f = Finder.create("select bean from EMovie bean");
 		f.append(" order by bean.id desc");
@@ -58,9 +65,21 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<EMovie> getList() {
+	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count) {
 		Finder f = Finder.create("select bean from EMovie bean");
-		f.append(" order by bean.id desc");
+		f.append(" where 1=1");
+		if (recommend != null) {
+			f.append(" and bean.recommend=:recommend");
+			f.setParam("recommend", recommend);
+		}
+		if (first != null) {
+			f.setFirstResult(first);
+		}
+		if (count != null) {
+			f.setMaxResults(count);
+		}
+		f.setCacheable(true);
+		appendOrder(f,orderBy);
 		return find(f);
 	}
 
@@ -80,6 +99,26 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 			getSession().delete(entity);
 		}
 		return entity;
+	}
+	
+	private void appendOrder(Finder f, int orderBy) {
+		switch (orderBy) {
+		case 1:
+			// ID升序
+			f.append(" order by bean.id asc");
+			break;
+		case 2:
+			// 发布时间降序
+			f.append(" order by bean.createDate desc");
+			break;
+		case 3:
+			// 发布时间升序
+			f.append(" order by bean.createDate asc");
+			break;
+		default:
+			// 默认： ID降序
+			f.append(" order by bean.id desc");
+		}
 	}
 	
 

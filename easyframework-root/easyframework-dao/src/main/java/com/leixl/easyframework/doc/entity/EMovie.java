@@ -14,6 +14,8 @@
 package com.leixl.easyframework.doc.entity;
 
 import java.util.Date;
+import java.util.List;
+
 
 /**
  *  电影
@@ -33,11 +35,27 @@ public class EMovie extends BaseEMovie{
 		if(getDisabled() == null){
 			setDisabled(false);
 		}
+		if(getRecommend() == null){
+			setRecommend(false);
+		}
 		if(getCreateDate() == null){
 			setCreateDate(currDate);
 		}
 		if(getUpdateDate() == null){
 			setUpdateDate(currDate);
+		}
+	}
+	
+	public String getTagStr() {
+		List<EMovieTag> tags = getTags();
+		if (tags != null && tags.size() > 0) {
+			StringBuilder sb = new StringBuilder();
+			for (EMovieTag tag : tags) {
+				sb.append(tag.getName()).append(',');
+			}
+			return sb.substring(0, sb.length() - 1);
+		} else {
+			return null;
 		}
 	}
 }

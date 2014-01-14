@@ -10,7 +10,7 @@ public interface EMovieBuilderService {
 
 	public void index() throws IOException, TemplateException;
 	
-	public void list() throws IOException, TemplateException;
+	public void pager() throws IOException, TemplateException;
 
 	public void tag() throws IOException, TemplateException;
 }

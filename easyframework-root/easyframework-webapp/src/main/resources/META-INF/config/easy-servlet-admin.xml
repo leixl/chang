@@ -73,6 +73,7 @@
 				<entry key="ch_pagination" value-ref="ch_pagination"/>
 				<entry key="ch_movie_list" value-ref="ch_movie_list"/>
 				<entry key="ch_movie_page" value-ref="ch_movie_page"/>
+				<entry key="ch_movietag_list" value-ref="ch_movietag_list"/>
 			</map>
 		</property>
 		<property name="freemarkerSettings">
@@ -93,7 +94,7 @@
 	<bean id="ch_pagination" class="com.leixl.easyframework.directive.PaginationDirective"/>
 	<bean id="ch_movie_list" class="com.leixl.easyframework.directive.EMovieDirective"/>
 	<bean id="ch_movie_page" class="com.leixl.easyframework.directive.EMoviePageDirective"/>
-	
+	<bean id="ch_movietag_list" class="com.leixl.easyframework.directive.EMovieTagDirective"/>
 	<context:annotation-config/>
 	
 </beans>

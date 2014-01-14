@@ -7,5 +7,12 @@
 		<id name="id" type="java.lang.Integer" column="tag_id"><generator class="identity"/></id>
 		<property name="name" column="tag_name" type="string" not-null="true"/>
 		<property name="typeId" column="type_id" type="integer" not-null="true" />
+		<property name="count" column="ref_counter" type="integer" not-null="true" length="10"/>
 	</class>
+	<sql-query name="EMovieTag.deleteContentRef">
+		delete from t_movietag where tag_id=?
+	</sql-query>
+	<sql-query name="EMovieTag.countContentRef">
+		select count(*) from t_movietag where tag_id=?
+	</sql-query>
 </hibernate-mapping>

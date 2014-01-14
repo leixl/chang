@@ -17,14 +17,15 @@ import java.util.List;
 
 import org.easyframework.core.hibernate3.Updater;
 import org.easyframework.core.pager.Pagination;
-import org.hibernate.sql.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leixl.easyframework.doc.dao.EMovieDao;
 import com.leixl.easyframework.doc.entity.EMovie;
+import com.leixl.easyframework.doc.entity.EMovieTag;
 import com.leixl.easyframework.doc.service.EMovieService;
+import com.leixl.easyframework.doc.service.EMovieTagService;
 
 /**
  *  
@@ -38,14 +39,11 @@ public class EMovieServiceImpl implements EMovieService{
 
 	@Autowired
 	private EMovieDao dao;
+	@Autowired
+	private EMovieTagService tagService;
 
 	public Pagination getPage(String name,Boolean disabled,int pageNo, int pageSize) {
 		Pagination page = dao.getPage(name,disabled,pageNo, pageSize);
-		return page;
-	}
-	
-	public Pagination getPageForTag(int pageNo, int pageSize) {
-		Pagination page = dao.getPageForTag(pageNo, pageSize);
 		return page;
 	}
 	
@@ -53,18 +51,33 @@ public class EMovieServiceImpl implements EMovieService{
 		return dao.getList();
 	}
 	
+	public Pagination getPageForTag(int pageNo, int pageSize) {
+		Pagination page = dao.getPageForTag(pageNo, pageSize);
+		return page;
+	}
+	
+	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count) {
+		return dao.getListForTag(recommend,orderBy,first,count);
+	}
+	
 	public EMovie getById(Integer id){
 		return dao.getById(id);
 	}
 
-	public EMovie save(EMovie bean){
+	public EMovie save(EMovie bean,String[] tagArr){
 		bean.init();
-	    return dao.save(bean);
+		dao.save(bean);
+		List<EMovieTag> tags = tagService.saveTags(tagArr);
+		bean.setTags(tags);
+	    return bean;
 	}
 	
-	public EMovie update(EMovie bean){
+	public EMovie update(EMovie bean,String[] tagArr){
 		Updater<EMovie> updater = new Updater<EMovie>(bean);
-		return dao.updateByUpdater(updater);
+		bean = dao.updateByUpdater(updater);
+		// 更新标签
+		tagService.updateTags(bean.getTags(), tagArr);
+		return bean;
 	}
 //
 //	public EMovie deleteById(Integer id){

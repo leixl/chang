@@ -13,12 +13,10 @@
  */
 package com.leixl.easyframework.doc.dao;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.easyframework.core.hibernate3.Updater;
 import org.easyframework.core.pager.Pagination;
-import org.hibernate.ScrollableResults;
 
 import com.leixl.easyframework.doc.entity.EMovie;
 
@@ -33,9 +31,11 @@ public interface EMovieDao {
 	public Pagination getPage(String name,Boolean disabled,
 			int pageNo, int pageSize);
 	
+	public List<EMovie> getList();
+	
 	public Pagination getPageForTag(int pageNo, int pageSize);
 	
-	public List<EMovie> getList();
+	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count) ;
 	
 	public EMovie getById(Integer id);
 

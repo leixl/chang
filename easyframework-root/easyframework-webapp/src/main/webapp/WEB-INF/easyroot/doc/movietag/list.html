@@ -50,8 +50,9 @@
 						<tr align="center" bgcolor="#FAFAF1" height="22">
 							<td width="4%">选择</td>
 							<td width="6%">ID</td>
-							<td width="58%">标签名称</td>
+							<td width="48%">标签名称</td>
 							<td width="12%">标签类型</td>
+							<td width="12%">引用次数</td>
 							<td width="10%">操作</td>
 						</tr>
 						
@@ -80,6 +81,7 @@
 							
 							</#switch>
                             </td>
+                            <td>${row.count}</td>
 							<td><a href="v_edit.do?id=${row.id}">编辑</a></td>
 						</tr>
 						</#list>

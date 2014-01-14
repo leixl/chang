@@ -57,17 +57,11 @@ public abstract class AbstractEMovieBuilder {
 		return realPathResolver.get(pathBuff.toString());
 	}
 	
-	public String getListPath(int pageNo){
+	public String getPagerPath(int pageNo){
 		StringBuilder pathBuff = new StringBuilder();
 		pathBuff.append(LOCATION);
-		if(pageNo > 1){
 			pathBuff.append("/").append(Constants.INDEX).append("_"+pageNo).append(
 					".html");
-		}else{
-			pathBuff.append("/").append(Constants.INDEX).append(
-					".html");
-		}
-		
 		return realPathResolver.get(pathBuff.toString());
 	}
 	

@@ -71,11 +71,11 @@ public class EMovieBuilderAction extends BaseAction{
 	 * @param request
 	 * @param response
 	 */
-	@RequestMapping(value = "/doc/movie/o_list.do")
-	public void listSubmit(HttpServletRequest request,
+	@RequestMapping(value = "/doc/movie/o_pager.do")
+	public void pagerSubmit(HttpServletRequest request,
 			HttpServletResponse response) {
 		try {
-			service.list();
+			service.pager();
 			ResponseUtils.renderJson(response, "success");
 		} catch (IOException e) {
 			ResponseUtils.renderJson(response,

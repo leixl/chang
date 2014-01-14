@@ -67,6 +67,20 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
     </tr>
     
     <tr>
+	  <td height="24" colspan="4" class="bline">
+	      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="90" height="22">&nbsp;<span class="pn-required">*</span>标签：</td>
+	            <td width="340" colspan="3"> 
+	            <input name="tagStr" type="text" id="tagStr" style="width:360px" value="" />&nbsp;（多个标签请用","隔开）
+	            </td>
+	          </tr>
+	          
+	        </table>
+	     </td>
+    </tr>
+    
+    <tr>
       <td height="24" colspan="4" class="bline"> 
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
@@ -100,6 +114,20 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
             <td width="240"> <input name="screeningDate" type="text" id="screeningDate" style="width:160px" value="" size="16"/></td>
             <td width="90"><span class="pn-required">*</span>片长：</td>
             <td><input name="leng" type="text" id="leng" style="width:60px" value="" size="6"/></td>
+          </tr>
+        </table></td>
+    </tr>
+    <tr>
+      <td height="24" colspan="4" class="bline">
+      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="90">&nbsp;<span class="pn-required">*</span>热门推荐：</td>
+            <td width="240" colspan="3"> 
+            <input name="recommend" type="radio" class="np" value="1" />
+              是
+            <input name="recommend" type="radio" class="np" value="0" checked />
+              否             <span class="pn-help">（勾选为热门推荐）</span>
+         </td>
           </tr>
         </table></td>
     </tr>

@@ -86,6 +86,26 @@ public class EMovieBuilderAction extends BaseAction{
 		}
 	}
 	
+	/**
+	 * 生成详情页
+	 * @param request
+	 * @param response
+	 */
+	@RequestMapping(value = "/doc/movie/o_detail.do")
+	public void detailSubmit(HttpServletRequest request,
+			HttpServletResponse response) {
+		try {
+			service.detail();
+			ResponseUtils.renderJson(response, "success");
+		} catch (IOException e) {
+			ResponseUtils.renderJson(response,
+					e.getMessage());
+		} catch (TemplateException e) {
+			ResponseUtils.renderJson(response,
+					e.getMessage());
+		}
+	}
+	
 	
 	/**
 	 * 生成列表页

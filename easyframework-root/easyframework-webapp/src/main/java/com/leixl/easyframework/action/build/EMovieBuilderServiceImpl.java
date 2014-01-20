@@ -1,5 +1,6 @@
 package com.leixl.easyframework.action.build;
 
+import static org.easyframework.core.pager.SimplePage.DEF_COUNT;
 import static com.leixl.easyframework.action.build.ConstantsOfBuilder.TPLDIR_INDEX;
 import static com.leixl.easyframework.action.build.ConstantsOfBuilder.TPL_BASE;
 import static com.leixl.easyframework.action.build.ConstantsOfBuilder.TPL_BASE_DIR;
@@ -22,10 +23,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
+import com.leixl.easyframework.common.DateFormatUtils;
 import com.leixl.easyframework.doc.dao.EMovieDao;
 import com.leixl.easyframework.doc.entity.EMovie;
 import com.leixl.easyframework.web.TplUtils;
-import com.leixl.easyframework.web.URLHelper;
 import com.leixl.easyframework.web.URLHelper.PageInfo;
 
 import freemarker.template.Configuration;
@@ -57,7 +58,7 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 		
 		List<EMovie> movies = dao.getList();
 		PageInfo info;
-		int pageSize = 4;
+		int pageSize = DEF_COUNT;
 		int totalPage = movies.size() / pageSize + 1;
 		for(int i = 1 ; i <= totalPage ; i ++){
 //			info = URLHelper.getPageInfo(getListPath(i).substring(getListPath(i)
@@ -65,6 +66,23 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 			TplUtils.frontPageData(i,  data);//将pageNo放入环境标量中。
 			build(tpl, getPagerPath(i),data);
 		}
+	}
+	
+	@Transactional(readOnly = true)
+	public void detail() throws IOException, TemplateException {
+		Map<String, Object> data = new HashMap<String, Object>();
+		TplUtils.frontData(data, LOCATION, null);
+		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR, null,
+				TPL_MOVIE_DETAIL);
+		List<EMovie> movies = dao.getList();
+		if(movies != null && movies.size() >0){
+			for(EMovie bean : movies){
+				TplUtils.frontData(data, LOCATION, null);
+				data.put("movie", bean);//将每个影片实体放入缓存中
+				build(tpl, getDetailPath(DateFormatUtils.format(bean.getCreateDate(),"yyyyMMdd"),bean.getId()),data);
+			}
+		}
+		
 	}
 	
 	@Transactional(readOnly = true)

@@ -362,12 +362,9 @@ body #db-pay-tips {
 	min-width: 950px;
 	overflow: hidden;
 	zoom: 1;
-	margin-bottom: 40px
 }
 
-.nav .nav-wrap {
-	border-bottom: 1px solid #e5ebe4
-}
+
 
 .nav .nav-primary,.nav .nav-secondary {
 	width: 950px;
@@ -384,31 +381,7 @@ body #db-pay-tips {
 	zoom: 1
 }
 
-.nav .nav-logo {
-	float: left;
-	height: 56px;
-	width: 145px;
-	margin: 0 13px 0 0;
-	background:
-		url(http://img3.douban.com/f/shire/8308f83ca66946299fc80efb1f10ea21f99ec2a5/pics/nav/lg_main_a11_1.png)
-		no-repeat 0 12px;
-	background-image: -webkit-image-set(url(http://img3.douban.com/f/shire/8308f83ca66946299fc80efb1f10ea21f99ec2a5/pics/nav/lg_main_a11_1.png)
-		1x,
-		url(http://img3.douban.com/f/shire/8977fa054324c4c7f565447b003ebf75e9b4f9c6/pics/nav/lg_main@2x.png)
-		2x);
-	background-image: -moz-image-set(url(http://img3.douban.com/f/shire/8308f83ca66946299fc80efb1f10ea21f99ec2a5/pics/nav/lg_main_a11_1.png)
-		1x,
-		url(http://img3.douban.com/f/shire/8977fa054324c4c7f565447b003ebf75e9b4f9c6/pics/nav/lg_main@2x.png)
-		2x);
-	background-image: -ms-image-set(url(http://img3.douban.com/f/shire/8308f83ca66946299fc80efb1f10ea21f99ec2a5/pics/nav/lg_main_a11_1.png)
-		1x,
-		url(http://img3.douban.com/f/shire/8977fa054324c4c7f565447b003ebf75e9b4f9c6/pics/nav/lg_main@2x.png)
-		2x);
-	background-image: -o-image-set(url(http://img3.douban.com/f/shire/8308f83ca66946299fc80efb1f10ea21f99ec2a5/pics/nav/lg_main_a11_1.png)
-		1x,
-		url(http://img3.douban.com/f/shire/8977fa054324c4c7f565447b003ebf75e9b4f9c6/pics/nav/lg_main@2x.png)
-		2x)
-}
+
 
 .nav .nav-logo a {
 	display: block;
@@ -609,7 +582,7 @@ body #db-pay-tips {
 }
 
 #db-nav-movie {
-	background-color: #f0f3f5
+
 }
 
 #db-nav-movie .nav-wrap {

@@ -17,12 +17,14 @@
 		<property name="publishYear" column="publish_year" type="string" not-null="false" />
 		<property name="screeningDate" column="screening_date" type="string" not-null="false"/>
 		<property name="leng" column="leng" type="integer" not-null="false" />
-		<property name="remark" column="remark" type="string" not-null="false"/>
+		<property name="remark" column="remark" type="org.springframework.orm.hibernate3.support.ClobStringType" not-null="false"/>
 		<property name="createDate" column="create_date" type="timestamp" not-null="true"/>
 		<property name="updateDate" column="update_date" type="timestamp" not-null="true"/>
 		<property name="recommend" column="is_recommend" type="java.lang.Boolean" not-null="true"/>
-		<property name="disabled" column="is_disabled" type="java.lang.Boolean" not-null="true"/>
+		<property name="downloadUrl" column="download_url" type="string" not-null="false"/>
+		<property name="downloadUrlxl" column="download_urlxl" type="string" not-null="false"/>
 		<property name="cover" column="cover" type="string" not-null="false"/>
+		<property name="disabled" column="is_disabled" type="java.lang.Boolean" not-null="true"/>
 		
 		<list name="tags" table="t_movietag">
 			<cache usage="read-write"/>

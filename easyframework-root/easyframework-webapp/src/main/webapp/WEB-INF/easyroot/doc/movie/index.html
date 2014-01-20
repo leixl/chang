@@ -20,9 +20,9 @@
 								<tr>
 									<td align="center">
 									    <input id="createButton" type='button' class="coolbg np" value='生成首页' onclick="createIndex();"/> 
-										<input id="createList" type='button' class="coolbg np" value='生成列表页' onclick="createPager();"/> 
+										<input id="createPager" type='button' class="coolbg np" value='生成列表页' onclick="createPager();"/> 
+										<input id="createDetail" type='button' class="coolbg np" value='生成详情页' onclick="createDetail();"/>
 										<input id="createTag" type='button' class="coolbg np" value='生成标签页' onclick="createTag();"/>
-										<input type='button' class="coolbg np" name='bb1'value='更新列表' />
 										<input type='button' class="coolbg np" name='bb2'  value='更新文档' />
 										<input type='button' class='coolbg np'
 										value='稿件审核' /></td>
@@ -72,7 +72,7 @@ function createIndex() {
 
 //电影列表页
 function createPager() {
-	var button = $("#createList");
+	var button = $("#createPager");
 	var value = button.val();
 	button.val("等待中……").attr("disabled","disabled");
 	$.ajax({url:"o_pager.do",
@@ -88,6 +88,23 @@ function createPager() {
 	});
 }
 
+//电影详情页
+function createDetail() {
+	var button = $("#createDetail");
+	var value = button.val();
+	button.val("等待中……").attr("disabled","disabled");
+	$.ajax({url:"o_detail.do",
+			dataType:'text',
+			success:function(data) {
+				button.val(value).removeAttr("disabled");		
+				if(data == 'success') {
+					alert("成功！");
+				} else {
+					alert("");			
+			    }
+			}
+	});
+}
 
 //电影标签
 function createTag() {

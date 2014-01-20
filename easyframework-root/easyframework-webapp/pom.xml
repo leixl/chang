@@ -128,6 +128,11 @@
 		</dependency>
 		
 		<dependency>
+			<groupId>com.leixl.easyframework</groupId>
+			<artifactId>jmagick</artifactId>
+		</dependency>
+		
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
@@ -136,7 +141,7 @@
 
 
 	<build>
-		<finalName>easyframework-webapp</finalName>
+		<finalName>chang</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>

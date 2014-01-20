@@ -13,8 +13,14 @@
  */
 package com.leixl.easyframework.doc.entity;
 
+
 import java.util.Date;
 import java.util.List;
+
+import org.apache.commons.lang.StringUtils;
+
+import com.leixl.easyframework.common.DateFormatUtils;
+
 
 
 /**
@@ -44,6 +50,32 @@ public class EMovie extends BaseEMovie{
 		if(getUpdateDate() == null){
 			setUpdateDate(currDate);
 		}
+	}
+	
+	/**
+	 * 获得URL地址
+	 * 
+	 * @return
+	 */
+	public String getUrl() {
+		if (!StringUtils.isBlank(getLink())) {
+			return getLink();
+		}
+		return getUrlStatic();
+	}
+	
+	public String getUrlStatic() {
+		if (!StringUtils.isBlank(getLink())) {
+			return getLink();
+		}
+		StringBuilder url = new StringBuilder();
+			// 默认静态路径
+			url.append("/").append("movie");
+			url.append("/");
+			url.append(DateFormatUtils.format(getCreateDate(),"yyyyMMdd"));
+			url.append("/").append(getId());
+			url.append(".html");
+		return url.toString();
 	}
 	
 	public String getTagStr() {

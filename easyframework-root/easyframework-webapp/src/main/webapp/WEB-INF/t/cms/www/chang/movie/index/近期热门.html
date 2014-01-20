@@ -11,24 +11,16 @@
 								<ul class="movies-list">
 								    <@ch_movie_list recommend='1' orderBy='4'>
                                     <#list tag_list as a>
-									<li class="list-item" data-title="演员就是演员 배우는 배우다"
-										data-release="2013" data-rate="6.1" data-star="30"
-										data-trailer="http://movie.douban.com/subject/10531178/trailer"
-										data-duration="113分钟" data-region="韩国" data-director="申渊植"
-										data-actors="李准 / 徐英姬 / 姜信惠" data-intro="" data-enough="True"
-										data-rater="782">
+									<li class="list-item">
 										<ul class="">
 											<li class="poster"><a
-												onclick="moreurl(this, {from:'mv_new_ptr_hot_3'})"
-												href="http://movie.douban.com/subject/10531178/?from=hot_movie">
+												href="${a.url}">
 													<img class="lazy"
-													data-original="${a.cover!}"
 													src="${a.cover!}"
-													alt="${a.name}" rel="nofollow" style="display: inline;">
+													alt="${a.name}" width="100" height="139">
 											</a></li>
 											<li class="title"><a class=""
-												onclick="moreurl(this, {from:'mv_new_tl_hot_3'})"
-												href="http://movie.douban.com/subject/10531178/?from=hot_movie">
+												href="${a.url}">
 													${a.name} </a></li>
 										</ul>
 									</li>

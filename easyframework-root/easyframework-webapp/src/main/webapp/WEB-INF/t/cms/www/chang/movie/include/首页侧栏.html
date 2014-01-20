@@ -1,6 +1,31 @@
 <div id="subject-tags" class="s" data-dstat-areaid="74"
 						data-dstat-mode="click,expose">
-						<div class="subject-tags-hd">
+
+					<div id="billboard" class="s" data-dstat-areaid="75"
+						data-dstat-mode="click,expose">
+						<div class="billboard-hd">
+							<h2>
+								2014最新影片下载<span><a href="">更多新片»</a></span>
+							</h2>
+						</div>
+						<div class="billboard-bd">
+							<table>
+								<tbody>
+								    <@ch_movie_list orderBy='4' count='15'>
+                                    <#list tag_list as a>
+									<tr>
+										<td class="order">${a_index+1}</td>
+										<td class="title"><a href="${a.url}">${a.title!} </a></td>
+									</tr>
+									</#list>
+                                    </@ch_movie_list>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+
+                    <div class="subject-tags-hd">
 							<h2>
 								影片分类<span><a onclick="moreurl(this, {from:'mv_l_atg'})"
 									href="${base}/movie/tag.html">所有分类»</a></span>
@@ -18,208 +43,29 @@
 					</div>
 
 
-
-					<div id="billboard" class="s" data-dstat-areaid="75"
-						data-dstat-mode="click,expose">
-						<div class="billboard-hd">
-							<h2>
-								本周口碑榜<span><a href="/chart">更多榜单»</a></span>
-							</h2>
-						</div>
-						<div class="billboard-bd">
-							<table>
-								<tbody>
-									<tr>
-										<td class="order">1</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/21937452/">许愿</a></td>
-									</tr>
-									<tr>
-										<td class="order">2</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/6803494/">极速风流</a></td>
-									</tr>
-									<tr>
-										<td class="order">3</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/10577869/">时空恋旅人</a></td>
-									</tr>
-									<tr>
-										<td class="order">4</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/11606328/">霍比特人2：史矛革之战</a></td>
-									</tr>
-									<tr>
-										<td class="order">5</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/10484601/">一切尽失</a></td>
-									</tr>
-									<tr>
-										<td class="order">6</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/10756518/">大梦想家</a></td>
-									</tr>
-									<tr>
-										<td class="order">7</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/6432898/">未来学大会</a></td>
-									</tr>
-									<tr>
-										<td class="order">8</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/3836070/">孤独的生还者</a></td>
-									</tr>
-									<tr>
-										<td class="order">9</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/19961072/">盛夏的方程式</a></td>
-									</tr>
-									<tr>
-										<td class="order">10</td>
-										<td class="title"><a
-											onclick="moreurl(this, {from:'mv_rk'})"
-											href="http://movie.douban.com/subject/20443013/">救火英雄</a></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-
-
-
-
-
 					<div id="douban-top250">
 						<div class="douban-top250-hd">
 							<h2>
-								豆瓣电影TOP250<span><a href="http://movie.douban.com/top250">更多»</a></span>
+								晓亮电影TOP100<span><a href="#">更多»</a></span>
 							</h2>
 						</div>
 						<div class="douban-top250-bd">
-
+                            <@ch_movie_list recommend='1' orderBy='4' count='10'>
+                            <#list tag_list as a>
 							<dl class="">
 								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/2365260/"> <img
-										src="http://img3.douban.com/spic/s2973335.jpg"
+									<a href="${a.url}"> <img
+										src="${a.cover}" width="67" height="97"
 										class="m_sub_img">
 									</a>
 								</dt>
 								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/2365260/" class="">
-										爱在暹罗 </a> <span class="gact"></span><br>
+									<a href="${a.url}" class="">
+										${a.name}</a> <span class="gact"></span><br>
 								</dd>
 							</dl>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1292262/"> <img
-										src="http://img3.douban.com/spic/s2383154.jpg"
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1292262/" class="">
-										美国往事 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1295399/"> <img
-										src=""
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1295399/" class="">
-										七武士 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
-							<div class="clearfix rr" style="width: 100%"></div>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1292047/"> <img
-										src="http://img3.douban.com/spic/s1728552.jpg"
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1292047/" class="">
-										蓝白红三部曲之红 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1301106/"> <img
-										src="http://img3.douban.com/spic/s1326063.jpg"
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1301106/" class="">
-										布达佩斯之恋 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/3157605/"> <img
-										src="http://img3.douban.com/spic/s4259121.jpg"
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/3157605/" class="">
-										巴黎淘气帮 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
-							<div class="clearfix rr" style="width: 100%"></div>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/4920528/"> <img
-										src="http://img5.douban.com/spic/s6985526.jpg"
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/4920528/" class="">
-										那些年，我们一起追的女孩 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
-							<dl class="">
-								<dt>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1291992/"> <img
-										src=""
-										class="m_sub_img">
-									</a>
-								</dt>
-								<dd>
-									<a onclick="moreurl(this, {from:'mv_tops'})"
-										href="http://movie.douban.com/subject/1291992/" class="">
-										末路狂花 </a> <span class="gact"></span><br>
-								</dd>
-							</dl>
+							</#list>
+                            </@ch_movie_list>
 
 						</div>
 					</div>

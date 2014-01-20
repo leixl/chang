@@ -45,9 +45,9 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline"> 
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<span class="pn-required">*</span>别名1：</td>
+            <td width="90">&nbsp;别名1：</td>
             <td width="240"><input name="aliasName1" type="text" id="aliasName1" style="width:160px" value="${movie.aliasName1!}" size="16"/></td>
-            <td width="90"><span class="pn-required">*</span>别名2：</td>
+            <td width="90">别名2：</td>
             <td> <input name="aliasName2" type="text" id="aliasName2" style="width:160px" value="${movie.aliasName2!}" /> </td>
           </tr>
         </table>
@@ -70,7 +70,7 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
 	  <td height="24" colspan="4" class="bline">
 	      	<table width="800" border="0" cellspacing="0" cellpadding="0">
 	          <tr>
-	            <td width="90" height="22">&nbsp;<span class="pn-required">*</span>标签：</td>
+	            <td width="90" height="22">&nbsp;标签：</td>
 	            <td width="340" colspan="3"> 
 	            <input name="tagStr" type="text" id="tagStr" style="width:360px" value="${movie.tagStr!}" />&nbsp;（多个标签请用","隔开）
 	            </td>
@@ -84,9 +84,9 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline"> 
         <table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;导演：</td>
+            <td width="90">&nbsp;<span class="pn-required">*</span>导演：</td>
             <td width="240"><input name="director" type="text" id="director" style="width:160px" value="${movie.director!}" size="16"/></td>
-            <td width="90">编剧：</td>
+            <td width="90">&nbsp;<span class="pn-required">*</span>编剧：</td>
             <td> 
               <input name="scenarist" type="text" id="scenarist" style="width:160px" value="${movie.scenarist!}" size="16"/>
             </td>
@@ -99,9 +99,9 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<span class="pn-required">*</span>国家/地区：</td>
+            <td width="90">&nbsp;国家/地区：</td>
             <td width="240"> <input name="area" type="text" id="area" style="width:160px" value="${movie.area!}" size="16"/></td>
-            <td width="90"><span class="pn-required">*</span>年份：</td>
+            <td width="90">年份：</td>
             <td><input name="publishYear" type="text" id="publishYear" style="width:160px" value="${movie.publishYear!}" size="16"/></td>
           </tr>
         </table></td>
@@ -110,9 +110,9 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<span class="pn-required">*</span>上映日期：</td>
+            <td width="90">&nbsp;上映日期：</td>
             <td width="240"> <input name="screeningDate" type="text" id="screeningDate" style="width:160px" value="${movie.screeningDate!}" size="16"/></td>
-            <td width="90"><span class="pn-required">*</span>片长：</td>
+            <td width="90">片长：</td>
             <td><input name="leng" type="text" id="leng" style="width:60px" value="${movie.leng!}" size="6"/></td>
           </tr>
         </table></td>
@@ -121,7 +121,7 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<span class="pn-required">*</span>热门：</td>
+            <td width="90">&nbsp;热门：</td>
             <td width="240" colspan="3"> 
             <#if movie.recommend><input name="recommend" type="radio" class="np" value="1" checked /><#else><input name="recommend" type="radio" class="np" value="1" /></#if>
               是
@@ -155,12 +155,52 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
       <td height="24" colspan="4" class="bline">
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="90">&nbsp;<span class="pn-required">*</span>描述：</td>
+            <td width="90">&nbsp;描述：</td>
             <td colspan="3">
-              <textarea id="remark" name="remark" style="width:360px">${movie.remark}</textarea> 
+              <textarea id="remarkEditor" name="remark" cols="100"  
+                                rows="8">${movie.remark}</textarea> 
+              <script type="text/javascript">
+				$(function() {
+				   	CKEDITOR.replace( 'remarkEditor' ,
+				   			{
+						   		filebrowserUploadUrl : '${base+appBase}/fck/upload.do',  
+						   		filebrowserImageUploadUrl : '${base+appBase}/fck/upload.do?Type=Image',  
+						   		filebrowserFlashUploadUrl : '${base+appBase}/fck/upload.do?Type=Flash',
+						   		filebrowserMediaUploadURL : '${base+appBase}/fck/upload.do?Type=Media',
+				   		     }
+				   	);  
+				 });
+			  </script>
             </td>
           </tr>
         </table></td>
+    </tr>
+    
+    <tr>
+	  <td height="24" colspan="4" class="bline">
+	      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="90" height="22">&nbsp;原始地址：</td>
+	            <td width="340" colspan="3"> 
+	            <input name="downloadUrl" type="text" id="downloadUrl" style="width:460px" value="${movie.downloadUrl!}" />
+	            </td>
+	          </tr>
+	          
+	        </table>
+	     </td>
+    </tr>
+    
+    <tr>
+	  <td height="24" colspan="4" class="bline">
+	      	<table width="800" border="0" cellspacing="0" cellpadding="0">
+	          <tr>
+	            <td width="90" height="22">&nbsp;下载地址：</td>
+	            <td width="340" colspan="3"> 
+	            <input name="downloadUrlxl" type="text" id="downloadUrlxl" style="width:460px" value="${movie.downloadUrlxl!}" />&nbsp;（迅雷）
+	            </td>
+	          </tr>
+	        </table>
+	     </td>
     </tr>
     
     
@@ -195,40 +235,36 @@ body { background-image: url(${base}/res/admin/images/allbg.gif); }
 <script type="text/javascript">
 $(function() {
 	
+	function CKupdate(){
+		 for ( instance in CKEDITOR.instances )
+		  CKEDITOR.instances[instance].updateElement();
+	}
+	
 	var options = {
         success:showResponse
     };
 	
 	$("#submitForm").submit(function() {
-		
         if($.trim($("#name").val()) == ""){
         	showAlert($("#name"),$("#nameTip"),"请输入片名!",null,"right");
 			return false;
 		}
-       
+        if(CKEDITOR.instances.remarkEditor.getData()==""){
+        	return false;
+        }
+        CKupdate();
+        //$(this).remark.value=CKEDITOR.instances.remarkEditor.getData();
         $(this).ajaxSubmit(options); 
         return false; 
     }); 
 	
-	//编辑器
-	CKEDITOR.replace('remark' ,
-   			{
-		   		filebrowserUploadUrl : '${base+appBase}/fck/upload.do',  
-		   		filebrowserImageUploadUrl : '${base+appBase}/fck/upload.do?Type=Image',  
-		   		filebrowserFlashUploadUrl : '${base+appBase}/fck/upload.do?Type=Flash',
-		   		filebrowserMediaUploadURL : '${base+appBase}/fck/upload.do?Type=Media'
-   		     }
-   	);  
+	
 }) 
 
 function showResponse(responseText, statusText, xhr, $form) {
-	
-	console.log(responseText);
 	if(checkAjaxRequestValidity(responseText)){
 		var resultDOM = $("#result");
-		
 		if(responseText == "success"){
-			console.log("success");
 			resultDOM.html("");
 	    	window.location.href = "v_list.do";
 	    }else{
@@ -236,8 +272,6 @@ function showResponse(responseText, statusText, xhr, $form) {
 	    		alert("ID不存在");
     			return false;
 		    }
-	    	
-	    	
     	}
 	}
 }

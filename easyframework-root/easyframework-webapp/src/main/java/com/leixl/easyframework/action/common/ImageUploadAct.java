@@ -1,9 +1,11 @@
 package com.leixl.easyframework.action.common;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.leixl.easyframework.web.image.ImageScale;
 import com.leixl.easyframework.web.upload.UploadUtils;
 
 
@@ -35,6 +38,9 @@ public class ImageUploadAct implements ServletContextAware{
 	 * 错误信息参数
 	 */
 	public static final String ERROR = "error";
+	
+	public static final int CUT_FILE_WIDTH=67;
+	public static final int CUT_FILE_HEIGHT=97;
 
 	@RequestMapping("/common/o_upload_image.do")
 	public String execute(
@@ -47,6 +53,8 @@ public class ImageUploadAct implements ServletContextAware{
 				Locale.ENGLISH);
 		try{
 			String fileUrl;
+			int cutWidth = CUT_FILE_WIDTH;
+		    int cutHeight = CUT_FILE_HEIGHT;
 			String ctx = request.getContextPath();
 			if (!StringUtils.isBlank(filename)) {
 				filename = filename.substring(ctx.length());
@@ -55,6 +63,22 @@ public class ImageUploadAct implements ServletContextAware{
 				fileUrl = storeByExt("/u", ext, file);
 				// 加上部署路径
 				fileUrl = ctx + fileUrl;
+				File cutFile = retrieve(fileUrl);
+				BufferedImage bi = ImageIO.read(cutFile);
+				System.out.println("Width=" + bi.getWidth());
+				System.out.println("Height=" + bi.getHeight());
+				//自动裁剪
+				
+				if(bi.getWidth() < cutWidth){
+					cutWidth = bi.getWidth();
+				}
+				if(bi.getHeight() < cutHeight){
+					cutHeight = bi.getHeight();
+				}
+				//自动裁剪
+				imageScale.resizeFix(cutFile, cutFile, cutWidth, cutHeight);
+				
+				
 			}
 			model.addAttribute("uploadPath", fileUrl);
 			model.addAttribute("uploadNum", uploadNum);
@@ -102,6 +126,10 @@ public class ImageUploadAct implements ServletContextAware{
 		}
 	}
 	
+	private File retrieve(String name) {
+		return new File(ctx.getRealPath(name));
+	}
+	
 	private String getRealPath(String name){
 		String realpath=ctx.getRealPath(name);
 		if(realpath==null){
@@ -109,6 +137,9 @@ public class ImageUploadAct implements ServletContextAware{
 		}
 		return realpath;
 	}
+	
+	@Autowired
+	private ImageScale imageScale;
 
 	private ServletContext ctx;
 

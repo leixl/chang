@@ -48,11 +48,9 @@
 					</tr>
 					
 						<tr align="center" bgcolor="#FAFAF1" height="22">
-							<td width="4%">选择</td>
-							<td width="6%">ID</td>
-							<td width="18%">片名</td>
-							<td width="8%">导演</td>
-							<td width="16%">编剧</td>
+							<td width="3%">选择</td>
+							<td width="3%">ID</td>
+							<td width="18%">标题</td>
 							<td width="8%">制片国家/地区</td>
 							<td width="6%">年份</td>
 							<td width="4%">是否热门</td>
@@ -63,9 +61,7 @@
 						<tr align='center' bgcolor="#FFFFFF" onMouseMove="javascript:this.bgColor='#FCFDEE';" onMouseOut="javascript:this.bgColor='#FFFFFF';" height="22" >
 							<td><input name="id" type="checkbox" id="id" value="101" class="np"></td>
 							<td>${row.id}</td>
-							<td>${row.name}</td>
-							<td>${row.director}</td>
-							<td>${row.scenarist}</td>
+							<td>${row.title!}</td>
 							<td>${row.area}</td>
 							<td>${row.publishYear}</td>
 							<td><#if row.recommend>是<#else>否</#if></td>

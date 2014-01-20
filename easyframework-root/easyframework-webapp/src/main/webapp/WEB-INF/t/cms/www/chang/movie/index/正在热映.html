@@ -12,8 +12,7 @@
 							</div>
 							<h2>
 								正在热映<span><a onclick="moreurl(this, {from:'mv_l_a'})"
-									href="./nowplaying/">全部正在热映»</a></span><span><a
-									onclick="moreurl(this, {from:'mv_l_w'})" href="./later/">即将上映»</a></span>
+									href="./nowplaying/">全部正在热映»</a></span>
 							</h2>
 						</div>
 						<div class="screening-bd">
@@ -25,14 +24,13 @@
 								<li class="ui-slide-item s">
 									<ul class="">
 										<li class="poster"><a
-											onclick="moreurl(this, {from:'mv_a_pst'})"
-											href=""> <img
+											href="${a.url}"> <img
 												src="${a.cover!}"
 												alt="${a.name}" rel="nofollow" class="">
 										</a></li>
 										<li class="title"><a
 											onclick="moreurl(this, {from:'mv_a_tl'})"
-											href="" class="">${a.name}</a>
+											href="${a.url}" class="">${a.name}</a>
 										</li>
 										<li class="rating"><span class="text-tip">暂无评分</span></li>
 									</ul>

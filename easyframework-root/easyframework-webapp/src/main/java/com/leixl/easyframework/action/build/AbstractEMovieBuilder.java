@@ -38,6 +38,11 @@ public abstract class AbstractEMovieBuilder {
 	public static final String TPL_MOVIE_LIST = "tpl.movie.list";
 	
 	/**
+	 * 详情模板名称
+	 */
+	public static final String TPL_MOVIE_DETAIL = "tpl.movie.detail";
+	
+	/**
 	 * 标签模板名称
 	 */
 	public static final String TPL_MOVIE_TAG = "tpl.movie.tag";
@@ -61,6 +66,15 @@ public abstract class AbstractEMovieBuilder {
 		StringBuilder pathBuff = new StringBuilder();
 		pathBuff.append(LOCATION);
 			pathBuff.append("/").append(Constants.INDEX).append("_"+pageNo).append(
+					".html");
+		return realPathResolver.get(pathBuff.toString());
+	}
+	
+	public String getDetailPath(String dateStr,Integer id){
+		StringBuilder pathBuff = new StringBuilder();
+		pathBuff.append(LOCATION).append("/");
+		pathBuff.append(dateStr);
+			pathBuff.append("/").append(id).append(
 					".html");
 		return realPathResolver.get(pathBuff.toString());
 	}

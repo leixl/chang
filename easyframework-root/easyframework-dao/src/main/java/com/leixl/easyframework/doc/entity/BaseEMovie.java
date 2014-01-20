@@ -55,6 +55,7 @@ public class BaseEMovie implements Serializable {
 	private String aliasName1;
 	private String aliasName2;
 	private String title;
+	private String link;
 	private String imdbNo;
 	private String director;
 	private String scenarist;
@@ -67,6 +68,8 @@ public class BaseEMovie implements Serializable {
 	private Date updateDate;
 	private Boolean recommend;
 	private String cover;
+	private String downloadUrl;
+	private String downloadUrlxl;
 	private Boolean disabled;
 	
 	private List<EMovieTag> tags;
@@ -117,6 +120,21 @@ public class BaseEMovie implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+
+	/**
+	 * @return the link
+	 */
+	public String getLink() {
+		return link;
+	}
+
+	/**
+	 * @param link the link to set
+	 */
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	public String getImdbNo() {
@@ -220,6 +238,34 @@ public class BaseEMovie implements Serializable {
 
 	public void setCover(String cover) {
 		this.cover = cover;
+	}
+    
+	/**
+	 * @return the downloadUrl
+	 */
+	public String getDownloadUrl() {
+		return downloadUrl;
+	}
+
+	/**
+	 * @param downloadUrl the downloadUrl to set
+	 */
+	public void setDownloadUrl(String downloadUrl) {
+		this.downloadUrl = downloadUrl;
+	}
+
+	/**
+	 * @return the downloadUrlxl
+	 */
+	public String getDownloadUrlxl() {
+		return downloadUrlxl;
+	}
+
+	/**
+	 * @param downloadUrlxl the downloadUrlxl to set
+	 */
+	public void setDownloadUrlxl(String downloadUrlxl) {
+		this.downloadUrlxl = downloadUrlxl;
 	}
 
 	public Boolean getDisabled() {

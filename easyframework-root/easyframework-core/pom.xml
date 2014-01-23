@@ -100,5 +100,16 @@
 		  <groupId>commons-codec</groupId>
 		  <artifactId>commons-codec</artifactId>
 	</dependency>
+	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>lucene-core</artifactId>
+	</dependency>	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>IKAnalyzer2012_u6</artifactId>
+	</dependency>	
+	
+	
   </dependencies>
 </project>

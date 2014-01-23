@@ -5,15 +5,19 @@
        <a href="${base}/">畅电影</a>
      </div>
       -->
+    <form action="${base}/search.htm" target="_blank">  
     <div class="nav-search">
         <fieldset>
           <legend>搜索：</legend>
           <label for="inp-query" style="display: none;">电影</label>
-          <div class="inp"><input id="inp-query" name="search_text" size="22" maxlength="60" value="" placeholder="柯南爱电影" class="placeholder" autocomplete="off"></div>
+          <div class="inp">
+          <input class="placeholder" name="q" value="${q!'请输入关键词'}" type="text" id="txtKey" onfocus="if(this.value=='请输入关键词')this.value=''" onblur="if(this.value=='')this.value='请输入关键词'" maxlength="24" autocomplete="off" />
+          </div>
           <div class="inp-btn"><input type="submit" value="搜索"></div>
           <input type="hidden" name="cat" value="1002">
         </fieldset>
     </div>
+    </form>
   </div>
   </div>
 </div>

@@ -100,7 +100,7 @@ public class Constants {
 	/**
 	 * 全文检索索引路径
 	 */
-	public static final String LUCENE_PATH = "/lucene";
+	public static final String LUCENE_PATH = "/WEB-INF/lucene";
 	/**
 	 * 列表样式模板路径
 	 */

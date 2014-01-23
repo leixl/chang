@@ -70,7 +70,7 @@ public class TplUtils {
 	/**
 	 * 部署路径
 	 */
-	public static final String APP_SOLUTION = "";
+	public static final String APP_SOLUTION = "/t/cms/www/chang/movie";
 	
 	/**
 	 * 页码
@@ -131,8 +131,13 @@ public class TplUtils {
 	 */
 	public static String getTplPath(HttpServletRequest request,
 			String dir, String name) {
-		return APP_SOLUTION + "/" + dir + "/"
-				+ MessageResolver.getMessage(request, name) + TPL_SUFFIX;
+		if(StringUtils.isBlank(dir)){
+			return APP_SOLUTION + "/" + MessageResolver.getMessage(request, name) + TPL_SUFFIX;
+		}else{
+			return APP_SOLUTION + "/" + dir + "/"
+					+ MessageResolver.getMessage(request, name) + TPL_SUFFIX;
+		}
+		
 	}
 	
 	/**

@@ -387,6 +387,17 @@
 		<version>1.0</version>
 	</dependency>
 	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>lucene-core</artifactId>
+		<version>3.0.3</version>
+	</dependency>	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>IKAnalyzer2012_u6</artifactId>
+		<version>1.0</version>
+	</dependency>	
+	
   </dependencies>
   </dependencyManagement>
   

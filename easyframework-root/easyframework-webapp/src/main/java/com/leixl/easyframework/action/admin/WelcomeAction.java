@@ -30,11 +30,6 @@ public class WelcomeAction {
 		return "index";
 	}
 	
-	@RequestMapping("/login.do")
-	public String login() {
-		return "login";
-	}
-	
 	@RequestMapping("/top.do")
 	public String top() {
 		return "top";

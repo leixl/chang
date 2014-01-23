@@ -27,5 +27,12 @@ public class EUser extends BaseEUser{
 	 */
 	private static final long serialVersionUID = 2406372032917959393L;
 
-	
+	public void init(){
+		if(getLoginCount()==null){
+			setLoginCount(0);
+		}
+		if(getErrorCount()==null){
+			setErrorCount(0);
+		}
+	}
 }

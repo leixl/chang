@@ -37,7 +37,14 @@
 		</property>
 	</bean>
 	<bean id="adminContextInterceptor" class="com.leixl.easyframework.web.interceptor.AdminContextInterceptor">
-		
+		<property name="loginUrl" value="/myadmin/login.do"/>
+		<property name="returnUrl" value="/myadmin/index.do"/>
+		<property name="excludeUrls">
+			<list>
+				<value>/login.do</value>
+				<value>/logout.do</value>
+			</list>
+		</property>
 	</bean>
 	<bean id="adminLocaleIntercept" class="com.leixl.easyframework.web.interceptor.AdminLocaleInterceptor"/>
 	

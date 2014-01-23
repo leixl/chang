@@ -39,8 +39,8 @@ public class ImageUploadAct implements ServletContextAware{
 	 */
 	public static final String ERROR = "error";
 	
-	public static final int CUT_FILE_WIDTH=67;
-	public static final int CUT_FILE_HEIGHT=97;
+	public static final int CUT_FILE_WIDTH=128;
+	public static final int CUT_FILE_HEIGHT=160;
 
 	@RequestMapping("/common/o_upload_image.do")
 	public String execute(

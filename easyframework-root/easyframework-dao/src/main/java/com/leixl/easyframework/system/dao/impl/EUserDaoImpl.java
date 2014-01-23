@@ -13,10 +13,13 @@
  */
 package com.leixl.easyframework.system.dao.impl;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.easyframework.core.hibernate3.Finder;
 import org.easyframework.core.hibernate3.HibernateBaseDao;
 import org.easyframework.core.pager.Pagination;
+import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
 import com.leixl.easyframework.system.dao.EUserDao;
@@ -58,15 +61,57 @@ public class EUserDaoImpl extends HibernateBaseDao<EUser,Long> implements EUserD
 		return find(f, pageNo, pageSize);
 	}
 	
+	public EUser findById(Long id) {
+		EUser entity = get(id);
+		return entity;
+	}
+
+	public EUser findByUsername(String username) {
+		return findUniqueByProperty("username", username);
+	}
+	
+	public List<EUser> findByEmail(String email) {
+		return findByProperty("email", email);
+	}
+
+
+	public int countByUsername(String username) {
+		String hql = "select count(*) from EUser bean where bean.username=:username";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("username", username);
+		return ((Number) query.iterate().next()).intValue();
+	}
+	public int countMemberByUsername(String username) {
+		String hql = "select count(*) from EUser bean where bean.username=:username and bean.admin=false";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("username", username);
+		return ((Number) query.iterate().next()).intValue();
+	}
+
+	public int countByEmail(String email) {
+		String hql = "select count(*) from EUser bean where bean.email=:email";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("email", email);
+		return ((Number) query.iterate().next()).intValue();
+	}
+
+	public EUser save(EUser bean) {
+		getSession().save(bean);
+		return bean;
+	}
+
+	public EUser deleteById(Long id) {
+		EUser entity = super.get(id);
+		if (entity != null) {
+			getSession().delete(entity);
+		}
+		return entity;
+	}
 	
 	
 	
-	/* (non-Javadoc)
-	 * @see org.easyframework.core.hibernate3.HibernateBaseDao#getEntityClass()
-	 */
 	@Override
 	protected Class<EUser> getEntityClass() {
-		// TODO Auto-generated method stub
 		return EUser.class;
 	}
 

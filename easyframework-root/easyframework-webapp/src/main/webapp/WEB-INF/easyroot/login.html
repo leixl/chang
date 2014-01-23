@@ -9,24 +9,26 @@
 </head>
 <body>
 <div id="login-box">
-   <div class="login-top"><a href="../index.php" target="_blank" title="返回网站主页">返回网站主页</a></div>
-   <div class='safe-tips'>这里是织梦演示站点管理后台,默认用户名:<font color='red'>admin</font>,密码:<font color='red'>admin</font></div>
+   <div class="login-top"><a href="${base}/" target="_blank" title="返回网站主页">返回网站主页</a></div>
+   <#if message??>
+   <div class='safe-tips'>
+         ${message}
+   </div>
+   </#if>
    <div class="login-main">
-    <form name="form1" method="post" action="login.php">
-      <input type="hidden" name="gotopage" value="/dede/" />
-      <input type="hidden" name="dopost" value="login" />
-      <input name='adminstyle' type='hidden' value='newdedecms' />
+    <form name="form1" method="post" action="login.do">
+      <#if returnUrl??><input type="hidden" name="returnUrl" value="${returnUrl}"/></#if>
       <dl>
 	   <dt>用户名：</dt>
-	   <dd><input type="text" name="userid" class="alltxt"/></dd>
+	   <dd><input type="text" name="username" class="alltxt"/></dd>
 	   <dt>密&nbsp;&nbsp;码：</dt>
-	   <dd><input type="password" class="alltxt" name="pwd"/></dd>
+	   <dd><input type="password" class="alltxt" name="password"/></dd>
 	   		<dt>&nbsp;</dt>
-		<dd><button type="submit" name="sm1" class="login-btn" onclick="this.form.submit();">登录</button></dd>
+		<dd><button type="submit" name="sm1" class="login-btn">登录</button></dd>
 	 </dl>
 	</form>
    </div>
-   <div class="login-power">Powered by<a href="http://www.dedecms.com" title="DedeCMS官网"><strong>DedeCMSV57_UTF8_SP1</strong></a>&copy; 2004-2011 <a href="http://www.desdev.cn" target="_blank">DesDev</a> Inc.</div>
+   <div class="login-power">Powered by&copy; 2004-2011 <a href="http://www.kenanai.com" target="_blank">柯南爱</a> Inc.</div>
 </div>
 </body>
 </html>

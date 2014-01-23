@@ -33,4 +33,6 @@ public abstract class Constants {
 	 * HTTP GET请求
 	 */
 	public static final String GET = "GET";
+	
+	public static final String RETURN_URL = "returnUrl";
 }

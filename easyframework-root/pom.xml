@@ -397,6 +397,11 @@
 		<artifactId>IKAnalyzer2012_u6</artifactId>
 		<version>1.0</version>
 	</dependency>	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>jcaptcha</artifactId>
+		<version>1.0</version>
+	</dependency>
 	
   </dependencies>
   </dependencyManagement>

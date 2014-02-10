@@ -109,6 +109,10 @@
 		<groupId>com.leixl.easyframework</groupId>
 		<artifactId>IKAnalyzer2012_u6</artifactId>
 	</dependency>	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>jcaptcha</artifactId>
+	</dependency>	
 	
 	
   </dependencies>

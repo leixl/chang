@@ -13,7 +13,7 @@
  */
 package com.leixl.easyframework.action.front;
 
-
+import static com.leixl.easyframework.web.TplUtils.MODULE_NAME_MOVIE;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.leixl.easyframework.web.BaseAction;
 import com.leixl.easyframework.web.RequestUtils;
 import com.leixl.easyframework.web.TplUtils;
+
 
 
 /**
@@ -54,10 +55,10 @@ public class SearchAction extends BaseAction{
 		model.addAttribute("q",parseQ);
 		if (StringUtils.isBlank(q)) {
 			return TplUtils.getTplPath(request,
-					null, SEARCH_INPUT);
+					MODULE_NAME_MOVIE, SEARCH_INPUT);
 		} else {
 			return TplUtils.getTplPath(request,
-					null, SEARCH_RESULT);
+					MODULE_NAME_MOVIE, SEARCH_RESULT);
 		}
 	}
 }

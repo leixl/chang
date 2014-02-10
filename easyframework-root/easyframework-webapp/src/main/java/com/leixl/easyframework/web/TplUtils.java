@@ -70,7 +70,11 @@ public class TplUtils {
 	/**
 	 * 部署路径
 	 */
-	public static final String APP_SOLUTION = "/t/cms/www/chang/movie";
+	public static final String APP_SOLUTION = "/t/cms/www/chang";
+	
+	public static final String MODULE_NAME_MOVIE = "movie";
+	
+	public static final String MODULE_NAME_MEMBER = "member";
 	
 	/**
 	 * 页码

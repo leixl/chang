@@ -14,6 +14,7 @@
 		<param-value>
 			classpath:META-INF/config/application-context.xml
 			classpath:META-INF/config/cache-context.xml
+			classpath:META-INF/config/captcha-context.xml
 		</param-value>
 	</context-param>
 	<filter>
@@ -95,13 +96,12 @@
 	
 	
 	<servlet>
-		<servlet-name>DbFile</servlet-name>
-		<servlet-class>com.xzfashion.core.action.front.DbFileServlet</servlet-class>
+		<servlet-name>Jcaptcha</servlet-name>
+		<servlet-class>com.leixl.easyframework.web.JcaptchaServlet</servlet-class>
 	</servlet>
-	
 	<servlet-mapping>
-		<servlet-name>DbFile</servlet-name>
-		<url-pattern>/dbfile.svl</url-pattern>
+		<servlet-name>Jcaptcha</servlet-name>
+		<url-pattern>/captcha.svl</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>

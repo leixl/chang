@@ -1,5 +1,7 @@
 package com.leixl.easyframework.web.interceptor;
 
+import static com.leixl.easyframework.web.Constants.RES_PATH;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import com.leixl.easyframework.action.lucene.LuceneManagerAction;
 
 /**
  * CMS上下文信息拦截器
@@ -23,7 +23,7 @@ public class FrontContextInterceptor extends HandlerInterceptorAdapter {
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
-		String ctx = "/";
+		String ctx = request.getContextPath() ;
 		request.setAttribute("base", ctx);
 		log.info(request.getContextPath());
 		return true;

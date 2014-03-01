@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- saved from url=(0108)http://music.douban.com/artists/player/xdmserver?xdm_e=http%3A%2F%2Fwww.douban.com&xdm_c=default9446&xdm_p=1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Player XDM Server</title>
+        <meta charset="utf-8">
+        <script type="text/javascript" charset="utf-8" src="xdm-server.js"></script>
+    </head>
+    <body>
+    
+<script>var _check_hijack = function () {
+    var _sig = "h3CtAYCs", _login = false, bid = get_cookie('bid');
+    if (location.protocol != "file:" && (
+            typeof(bid) != "string" && _login ||
+            typeof(bid) == "string" && bid.substring(0,8) != _sig)) {
+        location.href += (/\?/.test(location.href)?"&":"?") + (
+                "_r=" + Math.random().toString(16).substring(2));
+    }};
+if (typeof(Do) != 'undefined') Do(_check_hijack);
+else if (typeof(get_cookie) != 'undefined') _check_hijack();
+</script>
+
+</body></html>

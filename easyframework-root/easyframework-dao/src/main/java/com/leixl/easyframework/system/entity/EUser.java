@@ -34,5 +34,6 @@ public class EUser extends BaseEUser{
 		if(getErrorCount()==null){
 			setErrorCount(0);
 		}
+		
 	}
 }

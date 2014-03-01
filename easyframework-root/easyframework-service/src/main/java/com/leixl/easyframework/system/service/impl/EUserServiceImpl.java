@@ -95,7 +95,23 @@ public class EUserServiceImpl implements EUserService {
 		}
 	}
 
-	
+	public EUser registMember(String username, String password,String nickName, 
+			String ip)  {
+		Date now = new Timestamp(System.currentTimeMillis());
+		EUser user = new EUser();
+		user.setUsername(username);
+		user.setPassword(pwdEncoder.encodePassword(password));
+		user.setRegisterIp(ip);
+		user.setRegisterTime(now);
+		user.setLastLoginIp(ip);
+		user.setLastLoginTime(now);
+		user.setAdmin(false);
+		//不强制验证邮箱直接激活
+		user.setActivation(true);
+		user.init();
+		dao.save(user);
+		return user;
+	}
 
 	public boolean usernameExist(String username) {
 		return getByUsername(username) != null;

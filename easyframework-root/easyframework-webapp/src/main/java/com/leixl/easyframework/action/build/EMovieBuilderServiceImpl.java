@@ -1,16 +1,11 @@
 package com.leixl.easyframework.action.build;
 
-import static org.easyframework.core.pager.SimplePage.DEF_COUNT;
 import static com.leixl.easyframework.action.build.ConstantsOfBuilder.TPLDIR_INDEX;
 import static com.leixl.easyframework.action.build.ConstantsOfBuilder.TPL_BASE;
 import static com.leixl.easyframework.action.build.ConstantsOfBuilder.TPL_BASE_DIR;
-import static com.leixl.easyframework.common.Constants.UTF8;
+import static org.easyframework.core.pager.SimplePage.DEF_COUNT;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.leixl.easyframework.common.DateFormatUtils;
 import com.leixl.easyframework.doc.dao.EMovieDao;
@@ -29,12 +23,10 @@ import com.leixl.easyframework.doc.entity.EMovie;
 import com.leixl.easyframework.web.TplUtils;
 import com.leixl.easyframework.web.URLHelper.PageInfo;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
 @Service
-public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements EMovieBuilderService {
+public class EMovieBuilderServiceImpl extends AbstractBuilder implements EMovieBuilderService {
 	private Logger log = LoggerFactory.getLogger(EMovieBuilderServiceImpl.class);
 
 	@Autowired
@@ -44,7 +36,7 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 	public void index() throws IOException, TemplateException {
 		Map<String, Object> data = new HashMap<String, Object>();
 		TplUtils.frontData(data, LOCATION, null);
-		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR, TPLDIR_INDEX,
+		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR+"/"+LOCATION, TPLDIR_INDEX,
 				TPL_INDEX);
 		build(tpl,getIndexPath(TPLDIR_INDEX), data);
 	}
@@ -53,7 +45,7 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 	public void pager() throws IOException, TemplateException {
 		Map<String, Object> data = new HashMap<String, Object>();
 		TplUtils.frontData(data, LOCATION, null);
-		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR, null,
+		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR+"/"+LOCATION, null,
 				TPL_MOVIE_LIST);
 		
 		List<EMovie> movies = dao.getList();
@@ -72,7 +64,7 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 	public void detail() throws IOException, TemplateException {
 		Map<String, Object> data = new HashMap<String, Object>();
 		TplUtils.frontData(data, LOCATION, null);
-		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR, null,
+		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR+"/"+LOCATION, null,
 				TPL_MOVIE_DETAIL);
 		List<EMovie> movies = dao.getList();
 		if(movies != null && movies.size() >0){
@@ -89,52 +81,15 @@ public class EMovieBuilderServiceImpl extends AbstractEMovieBuilder implements E
 	public void tag() throws IOException, TemplateException {
 		Map<String, Object> data = new HashMap<String, Object>();
 		TplUtils.frontData(data, LOCATION, null);
-		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR, null,
+		String tpl = TplUtils.getTplPath(tplMessageSource, "zh_CN", TPL_BASE + TPL_BASE_DIR+"/"+LOCATION, null,
 				TPL_MOVIE_TAG);
 		build(tpl, getTagPath("tag"),data);
 	} 
 	
 	
 
-	@Transactional(readOnly = true)
-	public void build(String tpl,String filePath, Map<String, Object> data)
-			throws IOException, TemplateException {
-		long time = System.currentTimeMillis();
-		File f = new File(filePath);
-		File parent = f.getParentFile();
-		if (!parent.exists()) {
-			parent.mkdirs();
-		}
-		Writer out = null;
-		try {
-			// FileWriter不能指定编码确实是个问题，只能用这个代替了。
-			out = new OutputStreamWriter(new FileOutputStream(f), UTF8);
-			Template template = conf.getTemplate(tpl);
-			template.process(data, out);
-		} finally {
-			if (out != null) {
-				out.flush();
-				out.close();
-			}
-		}
-		time = System.currentTimeMillis() - time;
-		log.info("create index page, in {} ms", time);
-	}
-
-
-
 	@Autowired
 	private MessageSource tplMessageSource;
 	
-	
-	@Autowired
-	private FreeMarkerConfigurer freemarkerConfig;
-
-	private Configuration conf;
-
-	@Autowired
-	public void setFreeMarkerConfigurer() {
-		this.conf = freemarkerConfig.getConfiguration();
-	}
 
 }

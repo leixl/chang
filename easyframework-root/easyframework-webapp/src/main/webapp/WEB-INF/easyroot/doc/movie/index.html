@@ -18,14 +18,23 @@
 						<td height="26" background="${base}/res/admin/images/newlinebg3.gif">
 							<table width="98%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
-									<td align="center">
-									    <input id="createButton" type='button' class="coolbg np" value='生成首页' onclick="createIndex();"/> 
-										<input id="createPager" type='button' class="coolbg np" value='生成列表页' onclick="createPager();"/> 
-										<input id="createDetail" type='button' class="coolbg np" value='生成详情页' onclick="createDetail();"/>
-										<input id="createTag" type='button' class="coolbg np" value='生成标签页' onclick="createTag();"/>
-										<input type='button' class="coolbg np" name='bb2'  value='更新文档' />
-										<input type='button' class='coolbg np'
-										value='稿件审核' /></td>
+									<td align="left">
+									    <input id="createHome" type='button' class="coolbg np" value='网站首页' onclick="createHome();"/> 
+									</td>    
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td height="26" background="${base}/res/admin/images/newlinebg3.gif">
+							<table width="98%" border="0" cellspacing="0" cellpadding="0">
+								<tr>
+									<td align="left">
+									    <input id="createIndex" type='button' class="coolbg np" value='电影首页' onclick="createIndex();"/> 
+										<input id="createPager" type='button' class="coolbg np" value='电影列表页' onclick="createPager();"/> 
+										<input id="createDetail" type='button' class="coolbg np" value='电影详情页' onclick="createDetail();"/>
+										<input id="createTag" type='button' class="coolbg np" value='电影标签页' onclick="createTag();"/>
+										</td>
 								</tr>
 							</table>
 						</td>
@@ -52,9 +61,28 @@
 
 
 <script type="text/javascript">
+
+//网站首页
+function createHome() {
+	var button = $("#createButton");
+	var value = button.val();
+	button.val("等待中……").attr("disabled","disabled");
+	$.ajax({url:"o_home.do",
+			dataType:'text',
+			success:function(data) {
+				button.val(value).removeAttr("disabled");		
+				if(data == 'success') {
+					alert("成功！");
+				} else {
+					alert("");			
+			    }
+			}
+	});
+}
+
 //电影首页
 function createIndex() {
-	var button = $("#createButton");
+	var button = $("#createIndex");
 	var value = button.val();
 	button.val("等待中……").attr("disabled","disabled");
 	$.ajax({url:"o_index.do",

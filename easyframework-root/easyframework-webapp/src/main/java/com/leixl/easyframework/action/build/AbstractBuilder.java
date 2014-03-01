@@ -13,10 +13,26 @@
  */
 package com.leixl.easyframework.action.build;
 
+import static com.leixl.easyframework.common.Constants.UTF8;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import com.leixl.easyframework.common.Constants;
 import com.leixl.easyframework.web.springmvc.RealPathResolver;
+
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
 /**
  *  
@@ -24,7 +40,7 @@ import com.leixl.easyframework.web.springmvc.RealPathResolver;
  * @date   2014年1月12日 上午11:42:56
  * @version v1.0
  */
-public abstract class AbstractEMovieBuilder {
+public abstract class AbstractBuilder {
 
 
 	/**
@@ -49,6 +65,14 @@ public abstract class AbstractEMovieBuilder {
 	
 	
 	public static final String LOCATION = "movie";
+	
+	/**
+	 * 生成静态文件路径
+	 * @return
+	 */
+	public String getHomePath(String fileName) {
+		return realPathResolver.get("index.html");
+	}
 
 	/**
 	 * 生成静态文件路径
@@ -87,6 +111,44 @@ public abstract class AbstractEMovieBuilder {
 		return realPathResolver.get(pathBuff.toString());
 	}
 	
+	@Transactional(readOnly = true)
+	public void build(String tpl,String filePath, Map<String, Object> data)
+			throws IOException, TemplateException {
+		long time = System.currentTimeMillis();
+		File f = new File(filePath);
+		File parent = f.getParentFile();
+		if (!parent.exists()) {
+			parent.mkdirs();
+		}
+		Writer out = null;
+		try {
+			// FileWriter不能指定编码确实是个问题，只能用这个代替了。
+			out = new OutputStreamWriter(new FileOutputStream(f), UTF8);
+			Template template = conf.getTemplate(tpl);
+			template.process(data, out);
+		} finally {
+			if (out != null) {
+				out.flush();
+				out.close();
+			}
+		}
+		time = System.currentTimeMillis() - time;
+	}
+
+
+	private Configuration conf;
+	
 	@Autowired
 	private RealPathResolver realPathResolver;
+	
+	
+	
+	@Autowired
+	private FreeMarkerConfigurer freemarkerConfig;
+
+
+	@Autowired
+	public void setFreeMarkerConfigurer() {
+		this.conf = freemarkerConfig.getConfiguration();
+	}
 }

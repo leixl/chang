@@ -31,7 +31,7 @@ public class ConstantsOfBuilder {
 	/**
 	 * 模板绝对路径
 	 */
-	public static final String TPL_BASE_DIR = "/www/chang/movie";
+	public static final String TPL_BASE_DIR = "/www/chang";
 	
 	/**
 	 * 首页模板

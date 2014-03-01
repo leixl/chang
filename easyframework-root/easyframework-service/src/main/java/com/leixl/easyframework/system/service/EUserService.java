@@ -48,6 +48,17 @@ public interface EUserService {
 	
 	public void updateLoginSuccess(Long userId, String ip) ;
 	
+	/**
+	 * 会员注册
+	 * @param username
+	 * @param password
+	 * @param nickName
+	 * @param ip
+	 * @return
+	 */
+	public EUser registMember(String username, String password,String nickName, 
+			String ip) ;
+	
 	public boolean usernameExist(String username);
 	
 	public boolean emailExist(String email);
@@ -69,4 +80,6 @@ public interface EUserService {
 	public EUser active(String username, String activationCode);
 	
 	public EUser activeLogin(EUser user, String ip);
+	
+	
 }

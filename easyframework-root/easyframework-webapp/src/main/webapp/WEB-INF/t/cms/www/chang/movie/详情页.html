@@ -19,8 +19,8 @@
 </head>
 
 <body>
-	<#include "include/页头顶栏.html"/> 
-	<#include "include/页头搜索栏.html"/>
+	<#include "../include/页头顶栏.html"/> 
+	<#include "../include/页头搜索栏.html"/>
 
 	<div id="wrapper">
 
@@ -104,18 +104,11 @@
 
 						<div id="interest_sect_level" class="clearfix">
 						        
-						            <a href="http://www.douban.com/reason=collectwish&amp;ck=" rel="nofollow" class="j a_show_login colbutt ll" name="pbtn-4915857-wish">
-						                <span>想看</span>
-						            </a>
-						            <a href="http://www.douban.com/reason=collectcollect&amp;ck=" rel="nofollow" class="j a_show_login colbutt ll" name="pbtn-4915857-collect">
-						                <span>看过</span>
-						            </a>
-						        <div class="ll j a_stars">
-						            评价:
-						    <span id="rating"><span id="stars">
-						    <a href="http://www.douban.com/register?reason=rate" class="j a_show_login" name="pbtn-4915857-1"><img src="http://img3.douban.com/pics/nst.gif" id="star1"></a><a href="http://www.douban.com/register?reason=rate" class="j a_show_login" name="pbtn-4915857-2"><img src="http://img3.douban.com/pics/nst.gif" id="star2"></a><a href="http://www.douban.com/register?reason=rate" class="j a_show_login" name="pbtn-4915857-3"><img src="http://img3.douban.com/pics/nst.gif" id="star3"></a><a href="http://www.douban.com/register?reason=rate" class="j a_show_login" name="pbtn-4915857-4"><img src="http://img3.douban.com/pics/nst.gif" id="star4"></a><a href="http://www.douban.com/register?reason=rate" class="j a_show_login" name="pbtn-4915857-5"><img src="http://img3.douban.com/pics/nst.gif" id="star5"></a></span><span id="rateword" class="pl"></span>
-						    <input id="n_rating" type="hidden" value=""></span>
-						        </div>
+						            <h2><span style="color:red;">下载地址：</span>&nbsp;&nbsp;</h2>
+				<a href="${movie.downloadUrlxl!}"
+				target="_self">
+				${movie.downloadUrl!}</a>
+						        
 						</div>
 			
 			            
@@ -154,7 +147,7 @@
 		</div>
 
 
-		<#include "include/页脚.html"/>
+		<#include "../include/页脚.html"/>
 
 	</div>
 </body>

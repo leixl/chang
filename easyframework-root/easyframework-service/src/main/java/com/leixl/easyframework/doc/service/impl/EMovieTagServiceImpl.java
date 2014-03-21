@@ -59,8 +59,14 @@ public class EMovieTagServiceImpl implements EMovieTagService{
 		return dao.getById(id);
 	}
 	
+	@Transactional(readOnly = true)
 	public EMovieTag getByName(String name){
 		return dao.getByName(name, false);
+	}
+	
+	@Transactional(readOnly = true)
+	public EMovieTag findByNameForTag(String name) {
+		return dao.getByName(name, true);
 	}
 
 	public EMovieTag save(EMovieTag bean){

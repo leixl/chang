@@ -31,8 +31,9 @@ public interface EMovieService {
 	
 	
 	public List<EMovie> getList();
+	
 	/**
-	 * 
+	 * 自定义标签
 	 * @param pageNo
 	 * @param pageSize
 	 * @return
@@ -40,7 +41,18 @@ public interface EMovieService {
 	public Pagination getPageForTag(int pageNo, int pageSize) ;
 	
 	/**
-	 * 
+	 * 自定义标签
+	 * @param tagIds
+	 * @param recommend
+	 * @param orderBy
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Pagination getPageByTagIdsForTag(Integer[] tagIds,Boolean recommend,
+			int orderBy, int pageNo, int pageSize);
+	/**
+	 * 自定义标签
 	 * @param recommend
 	 * @param orderBy
 	 * @param first

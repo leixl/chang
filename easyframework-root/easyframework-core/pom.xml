@@ -113,7 +113,14 @@
 		<groupId>com.leixl.easyframework</groupId>
 		<artifactId>jcaptcha</artifactId>
 	</dependency>	
-	
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>taobao-sdk-java</artifactId>
+	</dependency>
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>taobao-sdk-java-source</artifactId>
+	</dependency>
 	
   </dependencies>
 </project>

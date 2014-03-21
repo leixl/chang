@@ -19,6 +19,7 @@
 							<table width="98%" border="0" cellspacing="0" cellpadding="0">
 								<tr>
 									<td align="left">
+									    <input id="createAll" type='button' class="coolbg np" value='一键生成' onclick="createAll();"/>
 									    <input id="createHome" type='button' class="coolbg np" value='网站首页' onclick="createHome();"/> 
 									</td>    
 								</tr>
@@ -62,6 +63,19 @@
 
 <script type="text/javascript">
 
+//一键生成
+function createAll(){
+	var button = $("#createAll");
+	var value = button.val();
+	button.val("等待中……").attr("disabled","disabled");
+	createHome();
+	createIndex();
+	createPager();
+	createDetail();
+	createTag();
+	button.val(value).removeAttr("disabled");	
+}
+
 //网站首页
 function createHome() {
 	var button = $("#createButton");
@@ -71,11 +85,6 @@ function createHome() {
 			dataType:'text',
 			success:function(data) {
 				button.val(value).removeAttr("disabled");		
-				if(data == 'success') {
-					alert("成功！");
-				} else {
-					alert("");			
-			    }
 			}
 	});
 }
@@ -89,11 +98,6 @@ function createIndex() {
 			dataType:'text',
 			success:function(data) {
 				button.val(value).removeAttr("disabled");		
-				if(data == 'success') {
-					alert("成功！");
-				} else {
-					alert("");			
-			    }
 			}
 	});
 }
@@ -107,11 +111,6 @@ function createPager() {
 			dataType:'text',
 			success:function(data) {
 				button.val(value).removeAttr("disabled");		
-				if(data == 'success') {
-					alert("成功！");
-				} else {
-					alert("");			
-			    }
 			}
 	});
 }
@@ -125,11 +124,6 @@ function createDetail() {
 			dataType:'text',
 			success:function(data) {
 				button.val(value).removeAttr("disabled");		
-				if(data == 'success') {
-					alert("成功！");
-				} else {
-					alert("");			
-			    }
 			}
 	});
 }
@@ -143,11 +137,6 @@ function createTag() {
 			dataType:'text',
 			success:function(data) {
 				button.val(value).removeAttr("disabled");		
-				if(data == 'success') {
-					alert("成功！");
-				} else {
-					alert("");			
-			    }
 			}
 	});
 }

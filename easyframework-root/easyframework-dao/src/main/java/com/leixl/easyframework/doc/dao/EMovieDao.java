@@ -35,6 +35,18 @@ public interface EMovieDao {
 	
 	public Pagination getPageForTag(int pageNo, int pageSize);
 	
+	/**
+	 * 按标签查询分页
+	 * @param tagIds
+	 * @param recommend
+	 * @param orderBy
+	 * @param pageNo
+	 * @param pageSize
+	 * @return
+	 */
+	public Pagination getPageByTagIdsForTag(Integer[] tagIds,Boolean recommend,
+			int orderBy, int pageNo, int pageSize);
+	
 	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count) ;
 	
 	public EMovie getById(Integer id);

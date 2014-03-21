@@ -44,7 +44,7 @@ public class ImageUploadAct implements ServletContextAware{
 
 	@RequestMapping("/common/o_upload_image.do")
 	public String execute(
-			String filename,
+			String filename,Integer width,Integer height,
 			Integer uploadNum,
 			@RequestParam(value = "uploadFile", required = false) MultipartFile file,
 			HttpServletRequest request, ModelMap model) {

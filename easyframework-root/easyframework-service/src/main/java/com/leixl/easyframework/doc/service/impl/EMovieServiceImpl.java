@@ -56,6 +56,12 @@ public class EMovieServiceImpl implements EMovieService{
 		return page;
 	}
 	
+	public Pagination getPageByTagIdsForTag(Integer[] tagIds,Boolean recommend,
+			int orderBy, int pageNo, int pageSize){
+		Pagination page = dao.getPageByTagIdsForTag(tagIds, recommend,orderBy,pageNo,pageSize);
+		return page;
+	}
+	
 	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count) {
 		return dao.getListForTag(recommend,orderBy,first,count);
 	}

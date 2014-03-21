@@ -34,9 +34,9 @@ public interface EUserDao {
 	
 	public EUser findById(Long id);
 	
-	public EUser findByUsername(String username);
+	public EUser findByUsername(String email);
 	
-	public List<EUser> findByEmail(String email);
+	public EUser findByEmail(String email);
 	
 	public int countByUsername(String username);
 	

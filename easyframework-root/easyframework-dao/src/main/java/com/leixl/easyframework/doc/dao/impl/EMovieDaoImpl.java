@@ -63,6 +63,14 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 		f.append(" order by bean.id desc");
 		return find(f, pageNo, pageSize);
 	}
+	
+	public Pagination getPageByTagIdsForTag(Integer[] tagIds,Boolean recommend,
+			int orderBy, int pageNo, int pageSize) {
+		Finder f = byTagIds(tagIds, recommend,orderBy);
+		f.setCacheable(true);
+		return find(f, pageNo, pageSize);
+	}
+
 
 	@SuppressWarnings("unchecked")
 	public List<EMovie> getListForTag(Boolean recommend,int orderBy,Integer first, Integer count) {
@@ -99,6 +107,27 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 			getSession().delete(entity);
 		}
 		return entity;
+	}
+	
+	private Finder byTagIds(Integer[] tagIds,Boolean recommend, int orderBy) {
+		Finder f = Finder.create();
+		int len = tagIds.length;
+		if (len == 1) {
+			f.append("select bean from EMovie bean join bean.tags tag");
+			f.append(" where tag.id=:tagId").setParam("tagId", tagIds[0]);
+		} else {
+			f.append("select distinct bean from Content bean");
+			f.append(" join bean.tags tag");
+			f.append(" where tag.id in(:tagIds)");
+			f.setParamList("tagIds", tagIds);
+		}
+		
+		if (recommend != null) {
+			f.append(" and bean.recommend=:recommend");
+			f.setParam("recommend", recommend);
+		}
+		appendOrder(f, orderBy);
+		return f;
 	}
 	
 	private void appendOrder(Finder f, int orderBy) {

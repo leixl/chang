@@ -1,94 +1,188 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script type="text/javascript" src="/res/www/douban/js/jquery.js"></script>
-
-<script type="text/javascript">
-	function animate(dir, step) {
-		var position;
-		position = parseInt($("#content").css("margin-left"));
-		var contentwidth;
-		var sliderwidth;
-		contentwidth = parseInt($("#content").css("width"));
-		sliderwidth = parseInt($("#slider").css("width"));
-		//alert(position); 
-		switch (dir) {
-		case "right":
-			position = ((position - step) < (sliderwidth - contentwidth)) ? (sliderwidth - contentwidth)
-					: (position - step);
-			break;
-		case "left":
-			position = ((position + step) > 0) ? 0 : (position + step);
-			break;
-		default:
-			break;
-		}
-		;
-		//alert(position); 
-		$("#content").animate({
-			marginLeft : position + "px"
-		}, 800);
-	}
-	$(document).ready(function() {
-		$("#slider").css("width", ($("body").attr("clientWidth") - 80) + "px");
-		$("#leftA").click(function() {
-			animate("left", 400);
-		});
-		$("#rightA").click(function() {
-			animate("right", 400);
-		});
-	});
-</script>
-<style type="text/css">
-ul,li {
-	display: block;
-}
-
-li {
-	width: 150px;
-	float: left;
-}
-
-#content {
-	width: 2030px;
-	margin-left: 0px;
-}
-
-#slider {
-	margin-left: 40px;
-	overflow: hidden;
-}
-
-
-
-</style>
-</head>
-<body>
-    <div>
-    <a id="leftA" href="javascript:void(0);"> left </a>
-    <a id="rightA" href="javascript:void(0);"> right</a>
-    </div>
-	<div style="width: 1050px;background:#333;">
-		<div id="slider" style="width: 950px;background:#555;" >
-			<div id="content" style="margin-left: -270px;">
-				<ul id="Ul1" class="tab_nav"
-					style="margin-left: 0px; margin-right: 0px;">
-					<li id="gaom1" class="menuon">基本信息</li>
-					<li id="gaom2" class="menuoff">基本信息</li>
-					<li id="gaom3" class="menuoff">基本信息</li>
-					<li id="gaom4" class="menuoff">基本信息</li>
-					<li id="gaom5" class="menuoff">基本信息</li>
-					<li id="gaom6" class="menuoff">基本信息</li>
-					<li id="gaom7" class="menuoff">基本信息</li>
-					<li id="gaom8" class="menuoff">基本信息</li>
-					<li id="gaom9" class="menuoff">基本信息</li>
-					<li id="gaom10" class="menuoff">基本信息</li>
-					<li id="gaom11" class="menuoff">基本信息</li>
-				</ul>
-			</div>
-		</div>
-		
-	</div>
-
-</body>
-</html>
+<table bgcolor="#ffffff" cellpadding="0" cellspacing="0" class="" width="950">
+	<tbody>
+		<tr>
+			<td bgcolor="#2A2B2E" colspan="9" height="34" style="text-align:left;">
+				<div align="left">
+					<span style="color:#444;">&nbsp;&nbsp; <span style="color:#FFF;"><span style="font-size:14px;font-weight:700;">宝贝推荐</span></span></span></div>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37674462794&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="http://img03.taobaocdn.com/imgextra/i3/284758485/T2mI_NXvpXXXXXXXXX-284758485.jpg" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span><span>289.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37679201138&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="http://img04.taobaocdn.com/imgextra/i4/284758485/T2CV_LXuhaXXXXXXXX-284758485.jpg" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span><span>380</span><span style="line-height:1.5;">.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37669042467&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="http://img01.taobaocdn.com/imgextra/i1/284758485/T2xIbNXsXXXXXXXXXX-284758485.jpg" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span><span>369</span><span style="line-height:1.5;">.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37674551332&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="http://img03.taobaocdn.com/imgextra/i3/284758485/T2PMTNXtpXXXXXXXXX-284758485.jpg" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span>329<span style="line-height:1.5;">.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<table bgcolor="#ffffff" cellpadding="0" cellspacing="0" class="" width="950">
+	<tbody>
+		<tr>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37696716728&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="http://img04.taobaocdn.com/imgextra/i4/284758485/T20UnLXsVaXXXXXXXX-284758485.jpg" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span><span>439</span><span style="line-height:1.5;">.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37679201138&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="#" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span><span>380</span><span style="line-height:1.5;">.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<a href="http://item.taobao.com/item.htm?id=37669042467&amp;scene=taobao_shop" target="_blank"><img data-pinit="registered" height="300" src="#" style="float:none;margin:0px;" width="230" /></a></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span><span>369</span><span style="line-height:1.5;">.00</span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+			<td>
+				<table bgcolor="#faf4e6" cellpadding="0" cellspacing="0" class="" width="230">
+					<tbody>
+						<tr>
+							<td>
+								<img data-pinit="registered" height="300" src="#" style="float:none;margin:0px;" width="230" /></td>
+						</tr>
+						<tr>
+							<td bgcolor="#FFF" height="35" width="35">
+								<div align="center">
+									<span style="color:rgb(65,65,65);font-family:arial;font-size:12px;line-height:18px;">¥&nbsp;</span>329</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+			<td>
+				&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+<p>
+	&nbsp;</p>

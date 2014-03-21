@@ -36,6 +36,8 @@ public interface EMovieTagService {
 	
 	public EMovieTag getById(Integer id);
 	
+	public EMovieTag findByNameForTag(String name);
+	
 	public EMovieTag save(EMovieTag bean);
 	
 	public EMovieTag update(EMovieTag bean);

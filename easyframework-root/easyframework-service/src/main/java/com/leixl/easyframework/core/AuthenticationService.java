@@ -35,7 +35,7 @@ public interface AuthenticationService {
 	 */
 	public static final String AUTH_KEY = "auth_key";
 	
-	public EUser login(String username, String password, String ip,
+	public EUser login(String username, String password, String ip,boolean isAdmin,
 			HttpServletRequest request,HttpServletResponse response) throws UsernameNotFoundException
 			,BadCredentialsException,DisabledException;
 	

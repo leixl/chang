@@ -123,3 +123,29 @@ CREATE TABLE `t_movietag` (
   `tag_id` int(11) NOT NULL ,
   `priority` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='电影标签关联表';
+
+
+
+
+DROP TABLE IF EXISTS `t_dongxi`;
+CREATE TABLE `t_dongxi` (
+  `id` int(11) NOT NULL,
+  `title` varchar(200) NOT NULL COMMENT '标题',
+  `price` varchar(100) NOT NULL COMMENT '价格',
+  `create_date` date  COMMENT '创建日期',
+  `update_date` date  COMMENT '修改日期',
+  `user_id` bigint(32) NOT NULL,
+  `is_recommend` tinyint(1) NOT NULL default '0' COMMENT '是否推荐',
+  `is_disabled` tinyint(1) NOT NULL default '0' COMMENT '是否禁用',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='东西表';
+
+
+
+DROP TABLE IF EXISTS `t_dongxi`;
+CREATE TABLE `t_dongxi_picture` (
+  `dongxi_id` int(11) NOT NULL,
+  `priority` INT(11) NOT NULL COMMENT '排列顺序',
+  `img_path` varchar(200) NOT NULL COMMENT '图片路径',
+  `description` varchar(500)  COMMENT '描述'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='东西图片表';

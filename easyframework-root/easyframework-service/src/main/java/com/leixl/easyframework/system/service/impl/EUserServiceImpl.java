@@ -17,6 +17,9 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.lang.StringUtils;
 import org.easyframework.core.pager.Pagination;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.leixl.easyframework.core.PwdEncoder;
+import com.leixl.easyframework.core.SessionProvider;
 import com.leixl.easyframework.system.dao.EUserDao;
 import com.leixl.easyframework.system.entity.EUser;
 import com.leixl.easyframework.system.service.EUserService;
@@ -41,6 +45,9 @@ public class EUserServiceImpl implements EUserService {
 	
 	@Autowired
 	private PwdEncoder pwdEncoder;
+	
+	@Autowired
+	private SessionProvider session;
  
 	@Autowired
 	private EUserDao dao;
@@ -95,11 +102,12 @@ public class EUserServiceImpl implements EUserService {
 		}
 	}
 
-	public EUser registMember(String username, String password,String nickName, 
-			String ip)  {
+	public EUser registMember(String email, String password,String nickName, 
+			String ip,HttpServletRequest request,
+			HttpServletResponse response)  {
 		Date now = new Timestamp(System.currentTimeMillis());
 		EUser user = new EUser();
-		user.setUsername(username);
+		user.setEmail(email);
 		user.setPassword(pwdEncoder.encodePassword(password));
 		user.setRegisterIp(ip);
 		user.setRegisterTime(now);
@@ -110,6 +118,8 @@ public class EUserServiceImpl implements EUserService {
 		user.setActivation(true);
 		user.init();
 		dao.save(user);
+		
+		session.setAttribute(request, response, AUTH_KEY, user.getId());
 		return user;
 	}
 
@@ -125,7 +135,7 @@ public class EUserServiceImpl implements EUserService {
 		return dao.findByUsername(username);
 	}
 
-	public List<EUser> getByEmail(String email) {
+	public EUser getByEmail(String email) {
 		return dao.findByEmail(email);
 	}
 

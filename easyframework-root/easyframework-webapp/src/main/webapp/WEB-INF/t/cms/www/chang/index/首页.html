@@ -5,17 +5,19 @@
 <meta property="wb:webmaster" content="4333122820fff864">
 <meta property="qc:admins" content="27514711322166375">
 <title>柯南爱生活</title>
+<script type="text/javascript" src="/${res}/js/jquery.js"></script>
 <link href="/${res}/css/chang.css" rel="stylesheet" type="text/css">
 <link href="/${res}/css/65.css" rel="stylesheet">
 <link rel="stylesheet" href="/${res}/css/chang_home.css">
 <!-- COLLECTED CSS -->
+<script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey=21754647"></script>
 </head>
 
 <body>
 
 
   <#include "../include/页头顶栏.html"/>
-
+  <#include "../include/页头搜索栏.html"/>
 
    
 <div id="anony-movie" class="section">
@@ -68,7 +70,7 @@
   <ul>
     <@ch_movietag_list typeId='1'>
     <#list tag_list as a>
-    <li><a href="#">${a.name}</a></li>
+    <li><a href="${base}/getPageByTagIds.htm?tagId=${a.id}">${a.name}</a></li>
     </#list>   
     </@ch_movietag_list>
   </ul>
@@ -104,11 +106,11 @@
 
 
     <h2>
-        正在热映
+     晓亮推荐
             &nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·&nbsp;·
             <span class="pl">&nbsp;(
                 
-                    <a href="http://movie.kenanai.com/showtimes/" target="_self">更多</a>
+                    <a href="${base}/movie/" target="_self">更多</a>
                 ) </span>
     </h2>
 

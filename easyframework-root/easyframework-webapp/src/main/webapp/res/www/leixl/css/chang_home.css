@@ -11,7 +11,7 @@
 }
 
 .section {
-	padding: 10px 0;
+	padding: 20px 0;
 	margin-bottom: 30px;
 	min-height: 200px
 }
@@ -54,12 +54,10 @@
 
 .section-bg {
 	padding: 40px 0 20px;
-	background: #f7f7f7
 }
 
 .section:nth-child(2n) {
 	padding: 40px 0 20px;
-	background: #f7f7f7
 }
 
 .mod {
@@ -813,7 +811,7 @@
 }
 
 #anony-movie a:hover,#anony-movie a:active {
-	color: #fff
+	color: #333
 }
 
 #anony-movie .movie-list .title a:link,#anony-movie .movie-list .title a:visited
@@ -823,7 +821,7 @@
 
 #anony-movie .movie-list .title a:hover,#anony-movie .movie-list .title a:active
 	{
-	color: #fff
+	color: #333
 }
 
 #anony-movie .movie-list .pic {

@@ -10,7 +10,7 @@
 							<ul class="tags-list">
 							    <@ch_movietag_list typeId='1'>
                                 <#list tag_list as a>
-								<li class="list-item"><a href="">${a.name}</a></li>
+								<li class="list-item"><a href="${base}/getPageByTagIds.htm?tagId=${a.id}">${a.name}</a></li>
 								</#list>   
                                 </@ch_movietag_list>
 							</ul>

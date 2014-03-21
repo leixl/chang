@@ -1,39 +1,30 @@
-<div id="db-global-nav" class="global-nav">
-  <div class="bd">
-
-<div class="top-nav-info">
-      
-      <a href="${base}/login.htm" rel="nofollow">登录</a>
-      <a href="${base}/regist.htm">注册</a>
-</div>
-    <div class="global-nav-items">
-      <ul>
-            <li>
-            <a href="${base}/" >首页</a>
-            </li>
-            <li class="on">
-            <a href="${base}/movie/">电影</a>
-            </li>
-            <li>
-            <a href="#">音乐</a>
-            </li>
-            <li>
-            <a href="#">汽车党</a>
-            </li>
-            <li>
-            <a href="#" target="_blank">同城</a>
-            </li>
-            <li>
-              <a href="#more" class="bn-more"><span>更多</span></a>
-              <div class="more-items">
-                <table cellpadding="0" cellspacing="0">
-                    <tbody><tr><td><a href="http://9.douban.com" target="_blank" onclick="moreurl(this, {from: 'top-nav-click-9', uid: '0'})">九点</a></td></tr>
-                    <tr><td><a href="http://alphatown.com" target="_blank" onclick="moreurl(this, {from: 'top-nav-click-town', uid: '0'})">阿尔法城</a></td></tr>
-                    <tr><td><a href="http://www.douban.com/mobile/" target="_blank" onclick="moreurl(this, {from: 'top-nav-click-mobile', uid: '0'})">移动应用</a></td></tr>
-                </tbody></table>
-              </div>
-            </li>
-      </ul>
-    </div>
-  </div>
+<link rel="stylesheet" href="${base}/res/common/css/common.css">
+<div id="site_nav">
+	<div id="site_nav_md">
+		<ul class="menu">
+			<li class="noticenter" style="display: none"><a
+				href="#notiCenter" data-toggle="tab"></a></li>
+			<span id="userHead"></span>
+			<script type="text/javascript">  
+			    $.ajax({
+					type:'post',
+					url:'${base}/isLogin.htm',
+					dataType:'json',
+					success:function(responseJson){	
+						var site_head = $("#userHead");
+						if(responseJson.success) {
+							site_head.html('<li class="logged"> <a href="${base}/index.htm" class="myusername"><s></s>欢迎你，<span>'+responseJson.username+'</span></a><span class="fl">|</span><a href = "${base}/logout.htm">退出</a></li>');  
+						} else {
+							site_head.html('<li class="login-reg"><a href="${base}/tologin.htm">登陆</a><a href="${base}/toregist.htm">注册</a></li>');		
+						}
+					}
+			    });
+		    </script>
+			<li class="site_all"><a href="#sitemap" data-toggle="tab"><s></s>网址导航</a></li>
+			<li class="cctv6menu"><a href="#program" data-toggle="tab"><s></s>读书俱乐部</a></li>
+			<li class="client"><a href="#client" data-toggle="tab"><s></s>值得买</a></li>
+			<li class="media"><a href="${base}/movie/" data-toggle="tab"><s></s>看电影</a></li>
+			<li class="history"><a href="/" data-toggle="tab"><s></s>首页</a></li>
+		</ul>
+	</div>
 </div>

@@ -35,7 +35,22 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="frontContextInterceptor" class="com.leixl.easyframework.web.interceptor.FrontContextInterceptor"/>
+	<bean id="frontContextInterceptor" class="com.leixl.easyframework.web.interceptor.FrontContextInterceptor">
+	   <property name="loginUrl" value="tologin.htm"/>
+	   <property name="excludeUrls">
+			<list>
+				<value>/isLogin.htm</value>
+				<value>/tologin.htm</value>
+				<value>/toregist.htm</value>
+				<value>/email_unique.htm</value>
+				<value>/regist.htm</value>
+				<value>/login.htm</value>
+				<value>/search.htm</value>
+				<value>/getPageByTagIds.htm</value>
+				<value>/comment_list.htm</value>
+			</list>
+		</property>
+	</bean>
 	<bean id="frontLocaleInterceptor" class="com.leixl.easyframework.web.interceptor.FrontLocaleInterceptor"/>
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="cookieName" value="clientlanguage"/>
@@ -64,6 +79,9 @@
 			<map>
 				<!--在FCK编辑器中需要用到appBase，以确定connector路径。-->
 				<!--后台管理权限控制-->
+				<entry key="ch_movie_page" value-ref="ch_movie_page"/>
+				<entry key="ch_movie_list" value-ref="ch_movie_list"/>
+				<entry key="ch_movietag_list" value-ref="ch_movietag_list"/>
 				<entry key="ch_pagination" value-ref="ch_pagination"/>
 				<entry key="ch_lucene_page" value-ref="ch_lucene_page"/>
 			</map>
@@ -84,7 +102,9 @@
 		</property>
 	</bean>
 	
-	
+	<bean id="ch_movie_page" class="com.leixl.easyframework.directive.EMoviePageDirective"/>
+	<bean id="ch_movie_list" class="com.leixl.easyframework.directive.EMovieDirective"/>
+	<bean id="ch_movietag_list" class="com.leixl.easyframework.directive.EMovieTagDirective"/>
 	<bean id="ch_pagination" class="com.leixl.easyframework.directive.PaginationDirective"/>
 	<bean id="ch_lucene_page" class="com.leixl.easyframework.action.lucene.LucenePageDirective"/>
 	<context:annotation-config/>

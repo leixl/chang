@@ -4,11 +4,16 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * HttpServletResponse帮助类
+ * 
+ * @author liufang
+ * 
  */
 public final class ResponseUtils {
 	public static final Logger log = LoggerFactory
@@ -24,6 +29,16 @@ public final class ResponseUtils {
 	 */
 	public static void renderText(HttpServletResponse response, String text) {
 		render(response, "text/plain;charset=UTF-8", text);
+	}
+	
+	/**
+	 * 发送Json。使用UTF-8编码.
+	 * 
+	 * @param response
+	 * @param json
+	 */
+	public static void renderJson(HttpServletResponse response, JSONObject json) {
+	    renderText(response, json.toString());
 	}
 
 	/**

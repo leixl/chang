@@ -70,8 +70,8 @@ public class EUserDaoImpl extends HibernateBaseDao<EUser,Long> implements EUserD
 		return findUniqueByProperty("username", username);
 	}
 	
-	public List<EUser> findByEmail(String email) {
-		return findByProperty("email", email);
+	public EUser findByEmail(String email) {
+		return findUniqueByProperty("email", email);
 	}
 
 

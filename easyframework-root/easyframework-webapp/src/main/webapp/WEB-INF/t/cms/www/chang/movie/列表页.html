@@ -17,6 +17,7 @@
 .tagCol td{width:20%;font-size:14px;}
 .tagCol td b{font-weight:normal;color:#aaa;}
 </style>
+<script src="http://l.tbcdn.cn/apps/top/x/sdk.js?appkey=21754647"></script>
 </head>
 
 <body>
@@ -28,14 +29,12 @@
 
 
 		<div id="content">
-            <h1>电影标签</h1>
 
 			<div class="grid-16-8 clearfix">
 
 			<div class="article">
-			<@ch_movie_page count='20'>
+			<@ch_movie_page count='20' >
 	             <div class="">
-				    
                     <#list tag_pagination.list as a>
 				    <p class="ul first"></p>
 				    <table width="100%" class="">
@@ -68,8 +67,7 @@
                     
 	                <@ch_pagination sysPage='1'></@ch_pagination>
 	               </div>
-                   </@ch_movie_page>
-        
+	        </@ch_movie_page>
 	            </div>
 
 

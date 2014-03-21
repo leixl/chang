@@ -76,7 +76,7 @@ public class LoginAction {
 			ModelMap model) {
 		try{
 			String ip = RequestUtils.getIpAddr(request);
-			EUser user = authService.login(username, password, ip,
+			EUser user = authService.login(username, password, ip,true,
 					request, response);
 			if(user!=null){
 				//登录成功返回后台首页

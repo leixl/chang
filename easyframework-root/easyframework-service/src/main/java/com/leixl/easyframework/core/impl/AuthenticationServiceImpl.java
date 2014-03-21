@@ -52,10 +52,15 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 	@Autowired
 	private SessionProvider session;
 
-	public EUser login(String username, String password, String ip,
+	public EUser login(String username, String password, String ip,boolean isAdmin,
 			HttpServletRequest request,HttpServletResponse response) throws UsernameNotFoundException
 			,BadCredentialsException,DisabledException{
-		EUser user = service.getByUsername(username);
+		EUser user = null;
+		if(isAdmin){
+			user = service.getByUsername(username);
+		}else{
+			user = service.getByEmail(username);
+		}
 		if (user == null) {
 			throw new UsernameNotFoundException("username not found: "
 					+ username);
@@ -70,6 +75,7 @@ public class AuthenticationServiceImpl implements AuthenticationService{
 		session.setAttribute(request, response, AUTH_KEY, user.getId());
 		return user;
 	}
+	
 	
 	public Long retrieveUserIdFromSession(HttpServletRequest request) {
 		return (Long) session.getAttribute(request, AUTH_KEY);

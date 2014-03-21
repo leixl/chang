@@ -7,9 +7,8 @@
 <link href="/${res}/css/chang.css" rel="stylesheet" type="text/css">
 <link href="/${res}/css/_all.css" rel="stylesheet" type="text/css">
 <link href="/${res}/css/65.css" rel="stylesheet">
-
+<link href="${base}/res/www/leixl/css/login.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="/${res}/js/jquery.js"></script>
-<script type="text/javascript" src="/${res}/js/slide.js"></script>
 
 <style type="text/css">
 .tagCol{width:100%}
@@ -27,6 +26,7 @@
 
 
 		<div id="content">
+		
             <h1>${movie.title}</h1>
 
 			<div class="grid-16-8 clearfix">
@@ -57,7 +57,7 @@
 						</div>
 	                </div>
                     
-	                    <!-- 评分 -->
+	                    <!-- 评分 
 						<div id="interest_sectl">
 								    <div class="rating_wrap clearbox" rel="v:rating">
 								        <p class="rating_self clearfix" typeof="v:Rating">
@@ -96,19 +96,14 @@
 								                <br>
 								    </div>
 								</div>
-			                    <!-- 评分 -->
+			                                             -->
 			            </div>
                 
 
 
 
 						<div id="interest_sect_level" class="clearfix">
-						        
-						            <h2><span style="color:red;">下载地址：</span>&nbsp;&nbsp;</h2>
-				<a href="${movie.downloadUrlxl!}"
-				target="_self">
-				${movie.downloadUrl!}</a>
-						        
+						 <h2><span style="color:red;">下载地址：&nbsp;&nbsp; <a href="${movie.downloadUrlxl!}" target="_self"> ${movie.downloadUrl!}</a></span></h2>     
 						</div>
 			
 			            
@@ -126,13 +121,16 @@
 				            </div>
 				</div>    
 				
-				<h2><span style="color:red;">下载地址：</span>&nbsp;&nbsp;</h2>
-				<a href="${movie.downloadUrlxl!}"
-				target="_self">
-				${movie.downloadUrl!}</a>
+				<h2><span style="color:red;">下载地址：&nbsp;&nbsp; <a href="${movie.downloadUrlxl!}" target="_self"> ${movie.downloadUrl!}</a></span></h2>  
                 <!-- 电影 -->
                 
-                
+                 <div class="hundred100">
+		            <div class="rim06">
+		                <!--网友评论_Begin-->
+		                <#include "include/评论页.html"/>
+		                <!--网友评论_End-->
+		            </div>
+                 </div>
 
                 </div>
 

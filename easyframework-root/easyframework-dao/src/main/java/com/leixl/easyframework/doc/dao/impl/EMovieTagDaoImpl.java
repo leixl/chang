@@ -37,7 +37,7 @@ public class EMovieTagDaoImpl extends HibernateBaseDao<EMovieTag, Integer> imple
 			int pageSize) {
 		Finder f = Finder.create("select bean from EMovieTag bean");
 		f.append(" where 1=1");
-		f.append(" order by bean.id desc");
+		f.append(" order by bean.count desc");
 		return find(f, pageNo, pageSize);
 	}
 

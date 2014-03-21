@@ -402,6 +402,16 @@
 		<artifactId>jcaptcha</artifactId>
 		<version>1.0</version>
 	</dependency>
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>taobao-sdk-java</artifactId>
+		<version>1.0</version>
+	</dependency>
+	<dependency>
+		<groupId>com.leixl.easyframework</groupId>
+		<artifactId>taobao-sdk-java-source</artifactId>
+		<version>1.0</version>
+	</dependency>
 	
   </dependencies>
   </dependencyManagement>

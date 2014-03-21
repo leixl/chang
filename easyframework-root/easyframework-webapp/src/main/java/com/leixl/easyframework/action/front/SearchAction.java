@@ -14,6 +14,7 @@
 package com.leixl.easyframework.action.front;
 
 import static com.leixl.easyframework.web.TplUtils.MODULE_NAME_MOVIE;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -41,6 +42,10 @@ public class SearchAction extends BaseAction{
 	
 	public static final String SEARCH_INPUT = "tpl.searchInput";
 	public static final String SEARCH_RESULT = "tpl.searchResult";
+	/**
+	 * 列表模板名称
+	 */
+	public static final String TPL_TAGMOVIE_LIST = "tpl.movie.tag_list";
 	
 	@RequestMapping(value = "/search*.htm", method = RequestMethod.GET)
 	public String index(HttpServletRequest request,
@@ -60,5 +65,18 @@ public class SearchAction extends BaseAction{
 			return TplUtils.getTplPath(request,
 					MODULE_NAME_MOVIE, SEARCH_RESULT);
 		}
+	}
+	
+	@RequestMapping(value = "/getPageByTagIds.htm", method = RequestMethod.GET)
+	public String getPageByTagIds(HttpServletRequest request,
+			HttpServletResponse response, ModelMap model) {
+		// 将request中所有参数保存至model中。
+		model.putAll(RequestUtils.getQueryParams(request));
+		TplUtils.frontData(request, model);
+		TplUtils.frontPageData(request, model);
+		String tagId = RequestUtils.getQueryParam(request, "tagId");
+		model.addAttribute("tagId",tagId);
+			return TplUtils.getTplPath(request,
+					MODULE_NAME_MOVIE, TPL_TAGMOVIE_LIST);
 	}
 }

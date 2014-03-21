@@ -15,6 +15,9 @@ package com.leixl.easyframework.system.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.easyframework.core.pager.Pagination;
 
 import com.leixl.easyframework.system.entity.EUser;
@@ -26,6 +29,11 @@ import com.leixl.easyframework.system.entity.EUser;
  * @version v1.0
  */
 public interface EUserService {
+	
+	/**
+	 * 认证信息session key
+	 */
+	public static final String AUTH_KEY = "auth_key";
  
 	/**
 	 * 用户列表
@@ -50,14 +58,15 @@ public interface EUserService {
 	
 	/**
 	 * 会员注册
-	 * @param username
+	 * @param email
 	 * @param password
 	 * @param nickName
 	 * @param ip
 	 * @return
 	 */
-	public EUser registMember(String username, String password,String nickName, 
-			String ip) ;
+	public EUser registMember(String email, String password,String nickName, 
+			String ip,HttpServletRequest request,
+			HttpServletResponse response) ;
 	
 	public boolean usernameExist(String username);
 	
@@ -65,7 +74,7 @@ public interface EUserService {
 	
 	public EUser getByUsername(String username);
 	
-	public List<EUser> getByEmail(String email);
+	public EUser getByEmail(String email);
 	
 	public EUser findById(Long id) ;
 	

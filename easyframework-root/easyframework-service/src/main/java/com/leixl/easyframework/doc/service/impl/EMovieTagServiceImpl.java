@@ -174,7 +174,7 @@ public class EMovieTagServiceImpl implements EMovieTagService{
 		for (EMovieTag tag : toRemove) {
 			//由于事务真正删除关联的sql语句还没有执行，这个时候jc_contenttag里至少还有一条数据。
 			if (dao.countRef(tag.getId()) <= 1) {
-				dao.deleteById(tag.getId());
+				dao.delete(tag);
 			} else {
 				// 还有引用，不应该出现的情况，此时无法删除。
 			}

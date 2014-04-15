@@ -49,26 +49,5 @@ public class EDongxiDaoImpl extends HibernateBaseDao<EDongxi, Long> implements
 		return find(f, pageNo, pageSize);
 	}
 	
-	public EDongxi getById(Long id) {
-		EDongxi entity = get(id);
-		return entity;
-	}
 
-	public EDongxi save(EDongxi bean) {
-		getSession().save(bean);
-		return bean;
-	}
-
-	public EDongxi deleteById(Long id) {
-		EDongxi entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
-	}
-	
-	@Override
-	protected Class<EDongxi> getEntityClass() {
-		return EDongxi.class;
-	}
 }

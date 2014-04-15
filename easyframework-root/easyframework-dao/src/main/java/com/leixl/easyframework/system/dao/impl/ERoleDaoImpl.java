@@ -21,8 +21,4 @@ public class ERoleDaoImpl extends HibernateBaseDao<ERole,Integer> implements ERo
 	}
 	
 	
-	@Override
-	protected Class<ERole> getEntityClass() {
-		return ERole.class;
-	}
 }

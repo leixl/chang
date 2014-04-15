@@ -32,7 +32,7 @@ public interface EUserDao {
 			Integer groupId, Boolean disabled, Boolean admin,
 			int pageNo, int pageSize) ;
 	
-	public EUser findById(Long id);
+	public EUser getById(Long id);
 	
 	public EUser findByUsername(String email);
 	
@@ -46,7 +46,7 @@ public interface EUserDao {
 	
 	public EUser save(EUser bean);
 	
-	public EUser deleteById(Long id);
+	public EUser delete(EUser bean);
 	
 	public EUser updateByUpdater(Updater<EUser> updater);
 }

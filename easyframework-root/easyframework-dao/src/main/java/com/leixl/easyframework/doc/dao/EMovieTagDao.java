@@ -41,7 +41,7 @@ public interface EMovieTagDao {
 	
 	public EMovieTag updateByUpdater(Updater<EMovieTag> updater);
 	
-	public EMovieTag deleteById(Integer id);
+	public EMovieTag delete(EMovieTag bean);
 	
 	public int deleteRef(Integer id);
 	

@@ -141,7 +141,7 @@ public class EUserServiceImpl implements EUserService {
 
 	@Transactional(readOnly = true)
 	public EUser findById(Long id) {
-		EUser entity = dao.findById(id);
+		EUser entity = dao.getById(id);
 		return entity;
 	}
 
@@ -170,7 +170,8 @@ public class EUserServiceImpl implements EUserService {
 	}
 
 	public EUser deleteById(Long id) {
-		EUser bean = dao.deleteById(id);
+		EUser user = findById(id);
+		EUser bean = dao.delete(user);
 		return bean;
 	}
 

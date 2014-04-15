@@ -38,6 +38,6 @@ public interface EMenuDao {
 	
 	public EMenu updateByUpdater(Updater<EMenu> updater);
 
-	public EMenu deleteById(Integer id);
+	public EMenu delete(EMenu bean);
 
 }

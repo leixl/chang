@@ -85,8 +85,13 @@ public class EMovieServiceImpl implements EMovieService{
 		tagService.updateTags(bean.getTags(), tagArr);
 		return bean;
 	}
-//
-//	public EMovie deleteById(Integer id){
-//		
-//	}
+
+	public EMovie deleteById(Integer id) {
+		EMovie entity = dao.getById(id);
+		if (entity != null) {
+			dao.delete(entity);
+		}
+		return entity;
+	}
+	
 }

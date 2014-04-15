@@ -81,7 +81,8 @@ public class EMenuServiceImpl implements EMenuService {
 	public EMenu[] deleteByIds(Integer[] ids) {
 		EMenu[] beans = new EMenu[ids.length];
 		for (int i = 0, len = ids.length; i < len; i++) {
-			beans[i] = dao.deleteById(ids[i]);
+			EMenu bean = dao.getById(ids[i]);
+			beans[i] = bean;
 		}
 		return beans;
 	}

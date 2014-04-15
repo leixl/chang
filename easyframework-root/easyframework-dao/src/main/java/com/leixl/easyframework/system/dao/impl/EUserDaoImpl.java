@@ -61,10 +61,6 @@ public class EUserDaoImpl extends HibernateBaseDao<EUser,Long> implements EUserD
 		return find(f, pageNo, pageSize);
 	}
 	
-	public EUser findById(Long id) {
-		EUser entity = get(id);
-		return entity;
-	}
 
 	public EUser findByUsername(String username) {
 		return findUniqueByProperty("username", username);
@@ -99,21 +95,5 @@ public class EUserDaoImpl extends HibernateBaseDao<EUser,Long> implements EUserD
 		getSession().save(bean);
 		return bean;
 	}
-
-	public EUser deleteById(Long id) {
-		EUser entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
-	}
-	
-	
-	
-	@Override
-	protected Class<EUser> getEntityClass() {
-		return EUser.class;
-	}
-
 	
 }

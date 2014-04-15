@@ -36,5 +36,5 @@ public interface EDongxiDao {
 	
 	public EDongxi updateByUpdater(Updater<EDongxi> updater);
 
-	public EDongxi deleteById(Long id);
+	public EDongxi delete(EDongxi bean);
 }

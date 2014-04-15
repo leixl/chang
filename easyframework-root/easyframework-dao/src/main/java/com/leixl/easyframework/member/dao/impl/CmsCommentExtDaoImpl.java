@@ -17,15 +17,6 @@ public class CmsCommentExtDaoImpl extends
 		return page;
 	}
 
-	public CmsCommentExt findById(Integer id) {
-		CmsCommentExt entity = get(id);
-		return entity;
-	}
-
-	public CmsCommentExt save(CmsCommentExt bean) {
-		getSession().save(bean);
-		return bean;
-	}
 
 	public int deleteByContentId(Integer movieId) {
 		String hql = "delete from CmsCommentExt bean where bean.id in"
@@ -34,16 +25,5 @@ public class CmsCommentExtDaoImpl extends
 				movieId).executeUpdate();
 	}
 
-	public CmsCommentExt deleteById(Integer id) {
-		CmsCommentExt entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
-	}
 
-	@Override
-	protected Class<CmsCommentExt> getEntityClass() {
-		return CmsCommentExt.class;
-	}
 }

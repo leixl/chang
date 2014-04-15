@@ -75,22 +75,10 @@ public class CmsCommentDaoImpl extends HibernateBaseDao<CmsComment, Integer>
 		return f;
 	}
 
-	public CmsComment findById(Integer id) {
-		CmsComment entity = get(id);
-		return entity;
-	}
 
 	public CmsComment save(CmsComment bean) {
 		getSession().save(bean);
 		return bean;
-	}
-
-	public CmsComment deleteById(Integer id) {
-		CmsComment entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
 	}
 
 	public int deleteByContentId(Integer movieId) {
@@ -99,8 +87,4 @@ public class CmsCommentDaoImpl extends HibernateBaseDao<CmsComment, Integer>
 				movieId).executeUpdate();
 	}
 	
-	@Override
-	protected Class<CmsComment> getEntityClass() {
-		return CmsComment.class;
-	}
 }

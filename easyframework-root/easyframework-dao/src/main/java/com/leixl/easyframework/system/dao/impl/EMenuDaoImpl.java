@@ -66,27 +66,4 @@ public class EMenuDaoImpl  extends HibernateBaseDao<EMenu,Integer> implements EM
 		return f;
 	}
 	
-	public EMenu getById(Integer id) {
-		EMenu entity = get(id);
-		return entity;
-	}
-	
-	
-	public EMenu save(EMenu bean) {
-		getSession().save(bean);
-		return bean;
-	}
-
-	public EMenu deleteById(Integer id) {
-		EMenu entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
-	}
-	
-	@Override
-	protected Class<EMenu> getEntityClass() {
-		return EMenu.class;
-	}
 }

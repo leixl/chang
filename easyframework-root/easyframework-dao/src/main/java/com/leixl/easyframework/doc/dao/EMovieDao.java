@@ -55,5 +55,5 @@ public interface EMovieDao {
 	
 	public EMovie updateByUpdater(Updater<EMovie> updater);
 
-	public EMovie deleteById(Integer id);
+	public EMovie delete(EMovie bean);
 }

@@ -77,7 +77,7 @@ public class CmsCommentServiceImpl implements CmsCommentService {
 
 	@Transactional(readOnly = true)
 	public CmsComment findById(Integer id) {
-		CmsComment entity = dao.findById(id);
+		CmsComment entity = dao.getById(id);
 		return entity;
 	}
 
@@ -112,8 +112,8 @@ public class CmsCommentServiceImpl implements CmsCommentService {
 	}
 
 	public CmsComment deleteById(Integer id) {
-		CmsComment bean = dao.deleteById(id);
-		return bean;
+		CmsComment bean = dao.getById(id);
+		return dao.delete(bean);
 	}
 
 	public CmsComment[] deleteByIds(Integer[] ids) {

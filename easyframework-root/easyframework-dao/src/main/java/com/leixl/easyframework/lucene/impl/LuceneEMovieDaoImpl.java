@@ -82,9 +82,4 @@ public class LuceneEMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> imple
 
 	}
 
-	
-	@Override
-	protected Class<EMovie> getEntityClass() {
-		return EMovie.class;
-	}
 }

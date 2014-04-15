@@ -91,24 +91,6 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 		return find(f);
 	}
 
-	public EMovie getById(Integer id) {
-		EMovie entity = get(id);
-		return entity;
-	}
-
-	public EMovie save(EMovie bean) {
-		getSession().save(bean);
-		return bean;
-	}
-
-	public EMovie deleteById(Integer id) {
-		EMovie entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
-	}
-	
 	private Finder byTagIds(Integer[] tagIds,Boolean recommend, int orderBy) {
 		Finder f = Finder.create();
 		int len = tagIds.length;
@@ -150,10 +132,4 @@ public class EMovieDaoImpl extends HibernateBaseDao<EMovie, Integer> implements
 		}
 	}
 	
-
-	@Override
-	protected Class<EMovie> getEntityClass() {
-		return EMovie.class;
-	}
-
 }

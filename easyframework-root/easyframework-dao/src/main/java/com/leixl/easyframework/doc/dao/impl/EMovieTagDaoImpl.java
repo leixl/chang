@@ -59,25 +59,6 @@ public class EMovieTagDaoImpl extends HibernateBaseDao<EMovieTag, Integer> imple
 				name).setCacheable(cacheable).uniqueResult();
 	}
 
-	public EMovieTag getById(Integer id) {
-		EMovieTag entity = get(id);
-		return entity;
-	}
-	
-	
-
-	public EMovieTag save(EMovieTag bean) {
-		getSession().save(bean);
-		return bean;
-	}
-
-	public EMovieTag deleteById(Integer id) {
-		EMovieTag entity = super.get(id);
-		if (entity != null) {
-			getSession().delete(entity);
-		}
-		return entity;
-	}
 	
 	public int deleteRef(Integer id) {
 		Query query = getSession().getNamedQuery("EMovieTag.deleteContentRef");
@@ -90,8 +71,5 @@ public class EMovieTagDaoImpl extends HibernateBaseDao<EMovieTag, Integer> imple
 				.intValue();
 	}
 
-	@Override
-	protected Class<EMovieTag> getEntityClass() {
-		return EMovieTag.class;
-	}
+
 }

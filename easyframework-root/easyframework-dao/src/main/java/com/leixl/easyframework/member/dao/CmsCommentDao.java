@@ -16,7 +16,7 @@ public interface CmsCommentDao{
 			Integer greaterThen, Boolean checked, boolean recommend,
 			boolean desc, int count, boolean cacheable);
 
-	public CmsComment findById(Integer id);
+	public CmsComment getById(Integer id);
 
 	public int deleteByContentId(Integer contentId);
 
@@ -24,7 +24,7 @@ public interface CmsCommentDao{
 
 	public CmsComment updateByUpdater(Updater<CmsComment> updater);
 
-	public CmsComment deleteById(Integer id);
+	public CmsComment delete(CmsComment bean);
 
 	public Pagination getPageForMember(Integer movieId,Integer toUserId,Integer fromUserId,
 			Integer greaterThen, Boolean checked, Boolean recommend,

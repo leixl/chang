@@ -1,0 +1,7 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.leixl.easyframework</groupId>
+  <artifactId>lucene-core</artifactId>
+  <version>3.0.3</version>
+  <packaging>jar</packaging>
+</project>

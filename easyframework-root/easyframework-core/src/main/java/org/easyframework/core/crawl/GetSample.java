@@ -14,40 +14,57 @@
 package org.easyframework.core.crawl;
 
 import java.io.IOException;
-import org.apache.commons.httpclient.*;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.httpclient.DefaultHttpMethodRetryHandler;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 
 public class GetSample {
+
+	public static String RESPONSE_TEXT = "responseText";
+	public static String CHARSET = "charset";
+
 	public static void main(String[] args) {
-		// 构造HttpClient的实例
-		HttpClient httpClient = new HttpClient();
-		// 创建GET方法的实例
-		GetMethod getMethod = new GetMethod("http://www.ibm.com");
-		// 使用系统提供的默认的恢复策略
-		getMethod.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
-				new DefaultHttpMethodRetryHandler());
+		String result = get(
+				"http://item.taobao.com/item.htm?spm=a1z10.1.w5003-5248687655.2.Jda0US&id=37543958237&scene=taobao_shop")
+				.get(GetSample.RESPONSE_TEXT);
+		
+		System.out.println(result);
+	}
+
+	public static Map<String, String> get(String url) {
+		Map<String, String> result = new HashMap<String, String>();
+		HttpClient client = new HttpClient();
+		GetMethod method = new GetMethod(url);
+		method.getParams().setParameter(HttpMethodParams.RETRY_HANDLER,
+		new DefaultHttpMethodRetryHandler(3, false));
 		try {
-			// 执行getMethod
-			int statusCode = httpClient.executeMethod(getMethod);
+			int statusCode = client.executeMethod(method);
+			String charset = method.getResponseCharSet();
+			method.getParams().setParameter(
+					HttpMethodParams.HTTP_CONTENT_CHARSET, charset);
 			if (statusCode != HttpStatus.SC_OK) {
-				System.err.println("Method failed: "
-						+ getMethod.getStatusLine());
+				System.err.println("Method failed: " + method.getStatusLine());
 			}
-			// 读取内容
-			byte[] responseBody = getMethod.getResponseBody();
-			// 处理内容
-			System.out.println(new String(responseBody));
+			byte[] responseBody = method.getResponseBody();
+			result.put(GetSample.RESPONSE_TEXT, new String(responseBody,
+					charset));
+			result.put(GetSample.CHARSET, charset);
 		} catch (HttpException e) {
-			// 发生致命的异常，可能是协议不对或者返回的内容有问题
-			System.out.println("Please check your provided http address!");
+			System.err.println("Fatal protocol violation: " + e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e) {
-			// 发生网络异常
+			System.err.println("Fatal transport error: " + e.getMessage());
 			e.printStackTrace();
 		} finally {
-			// 释放连接
-			getMethod.releaseConnection();
+			method.releaseConnection();
+			return result;
 		}
+
 	}
 }
